@@ -7,16 +7,7 @@ admin ID : <BR>
 admin PW : <BR>
 user ID :<BR>
 user PW :<BR>
-[p]  p는 따봉
-- [c] c는 반대따봉
-- [l] l는 아이디어
-- [!] !는 !
-- [*] "별"은 별
-- [a] a체크
-- [b] b 북마크
-- [n] n 핀
- - [i] ?
- - [-] 하이폰
+
 
 
 ## Table of Contents

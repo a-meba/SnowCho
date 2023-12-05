@@ -1,6 +1,6 @@
 # 불쌍한 순두부 🍲🍜🌶️
 
-A brief description of your project.
+A brief description of your project. <br>
 우리 프로젝트는 "불쌍한순두부찌게"라는 프렌차이즈를 위한 주문 및 관리 시스템을 개발하는 프로젝트입니다. 이 시스템은 가맹점 관리, 주문 처리, 재고 관리 등의 기능을 통해 프렌차이즈 운영을 효율적으로 지원합니다.
 
 

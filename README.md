@@ -10,7 +10,9 @@ A brief description of your project.
 - [License](#license)
 
 ## Installation
+![이미지 대체 텍스트](imgFile/Free_Sample_By_Wix.jpg)
 
+imgFile/Free_Sample_By_Wix.jpg
 Describe how to install your project and its dependencies.
 
 ```bash

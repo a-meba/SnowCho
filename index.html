@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sim playilst</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- 한페이지에 2개 화면 구현 : section 활용 -->
+    <section class="phone">
+        <header>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-search"></i>
+        </header>
+        <div class="artist">
+            <img src="c:\Users\tlarb\Downloads\Free_Sample_By_Wix.jpg" />
+            <h2>불상한 순두부</h2>
+            <h6>뿔쌍하지만 맛은 부드러워</h6>
+        </div>
+        
+        <!-- 버튼 구현 코드 -->
+        <div class="btns">
+            <span class="btns__btn">관리자</span>
+            <span class="btns__btn"><i class="fas fa-heart"></i>1 가맹점</span>
+        </div>
+        <!-- 리스트는 ul, li로  -->
+        <ul class="songs">
+            <li class="songs__song">
+                <div class="songs__data">
+                    <img
+                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/298/880/80298880_1340350651121_1_600x600.JPG/dims/resize/Q_80,0" />
+                    <div>
+                        <span class="songs__author">
+                            창업안내
+                        </span>
+                        <span class="songs__title">인테리어, 창업비용, 절차안내</span>
+                    </div>
+                </div>
+                <i class="fas fa-ellipsis-v"></i>
+            </li>
+            <li class="songs__song">
+                <div class="songs__data">
+                    <img
+                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG/dims/resize/Q_80,0" />
+                    <div>
+                        <span class="songs__author">
+                            1:1 창업문의 
+                        </span>
+                        <span class="songs__title">창업안내</span>
+                    </div>
+                </div>
+                <i class="fas fa-ellipsis-v"></i>
+            </li>
+            <li class="songs__song">
+                <div class="songs__data">
+                    <img
+                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/042/852/81042852_1636966832514_1_600x600.JPG/dims/resize/Q_80,0" />
+                    <div>
+                        <span class="songs__author">
+                            전화문의
+                        </span>
+                        <span class="songs__title">지역담당자연결 /</span>
+                    </div>
+                </div>
+                <i class="fas fa-ellipsis-v"></i>
+            </li>
+            <li class="songs__song">
+                <div class="songs__data">
+                    <img
+                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/015/044/934/15044934_1404873909048_1_600x600.JPG/dims/resize/Q_80,0" />
+                    <div>
+                        <span class="songs__author">
+                            Avril Lavigne - Let GO
+                        </span>
+                        <span class="songs__title">Sk8er Boi</span>
+                    </div>
+                </div>
+                <i class="fas fa-ellipsis-v"></i>
+            </li>
+            <li class="songs__song">
+                <div class="songs__data">
+                    <img
+                        src="https://mblogthumb-phinf.pstatic.net/20160529_134/incubator7_1464508108341hw7Ks_JPEG/attachImage_2339034298.jpeg?type=w800" />
+                    <div>
+                        <span class="songs__author">
+                            Kamikita Ken (上北健,kk)
+                        </span>
+                        <span class="songs__title">ミスト/Mist</span>
+                    </div>
+                </div>
+                <i class="fas fa-ellipsis-v"></i>
+            </li>
+            <li class="songs__song">
+                <div class="songs__data">
+                    <img
+                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/082/082/331/82082331_1623118862279_1_600x600.JPG/dims/resize/Q_80,0" />
+                    <div>
+                        <span class="songs__author">
+                            Sam Ryder
+                        </span>
+                        <span class="songs__title">Tiny Riot</span>
+                    </div>
+                </div>
+                <i class="fas fa-ellipsis-v"></i>
+            </li>
+        </ul>
+        <div class="currently-playing">
+            <div>
+                <span class="current__author">Lauv,Troye Svan</span>
+                <span class="currnt__song">i'm so tired...</span>
+            </div>
+            <div class="currnt__player">
+                <i class="fas fa-step-backward"></i>
+                <!-- fa-2x : 아이콘 크기 2배로 -->
+                <i class="fas fa-pause fa-2x"></i>
+                <i class="fas fa-step-forward"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="phone">
+        <header>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </header>
+        <div class="cover">
+            <img
+                src="c:\Users\tlarb\Downloads\Free_Sample_By_Wix.jpg" />
+        </div>
+        <div class="player">
+            <h4>i'm so tired...</h4>
+            <h5> Lauv & Troye Sivan</h5>
+        </div>
+        <div class="progress">
+            <div class="progress__time">
+                <span>1:42</span>
+                <span>2:42</span>
+            </div>
+            <!-- 2개의 div를 만들어 색을 구별지어 진행바 구현 -->
+            <div class="progress_   _bar">
+                <div class="progress__played"></div>
+                <div class="progress__total"></div>
+            </div>
+        </div>
+        <div class="actions">
+            <i class="fas fa-redo"></i>
+            <i class="fas fa-step-backward fa-lg"></i>
+            <span>
+                <i class="fas fa-play fa-lg"></i>
+            </span>
+            <i class="fas fa-step-forward fa-lg"></i>
+            <i class="fas fa-random"></i>
+        </div>
+    </section>
+        
+</body>
+
+</html>

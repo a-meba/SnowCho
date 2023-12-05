@@ -1,7 +1,8 @@
-# PoorSoftTofu
+# PoorSoftTofu 
+
 new project <br>
-since <br>
-start = "2023.12.04" <br>
+since = "2023" <br>
+start = "12.04" <br>
 end = "" <br>
 
 

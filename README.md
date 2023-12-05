@@ -2,17 +2,11 @@
 
 A brief description of your project.
 
-```html
-<kbd style="background-color: gray; color: white;">11.11 CT 예정</kbd>
-<kbd style="background-color: green; color: white;">10.31 화 온라인 설명회</kbd> 색깔 바꾸는법
 
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Installation
 ![이미지 대체 텍스트](imgFile/Free_Sample_By_Wix.jpg)

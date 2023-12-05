@@ -47,9 +47,11 @@ A brief description of your project. <br>
 
 ## 팀 소개
 
-| 열  |     오른쪽|왼쪽     | 가운데 |
-| --- | ----- :|: ------ | :------: |
-| ㅁ  |   ㅁ   | ㅁ     |   ㅁ   |
+| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+
 
 📖 순두부 프렌차이즈 
 readme_mockup2

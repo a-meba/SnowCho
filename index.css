@@ -278,3 +278,63 @@ header {
 .actions span i {
   color: white;
   opacity: 1 !important;
+}
+
+.button1 {
+    margin-top: 50px;
+    width: 200px;
+    height: 50px;
+    background-color: gray;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.button2 {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: white;
+}
+.divbox1 {
+    background-color: white;
+    height: 700px;
+    width: 100%;
+    text-align: center;
+}
+.login1 {
+    height: 100%;
+    width: 100%;
+}
+.login2 {
+    height: 100%;
+    width: 30%;
+}
+.innerbox1 {
+    margin-top: 100px;
+    height: 20%;
+}
+.innerbox2 {
+    height: 80%;
+    margin-top: 100px;
+}
+.p1 {
+    margin-top: 100px;
+}
+.p3 {
+    margin-top: 300px;
+}
+.p4 {
+    margin-top: 40px;
+}
+input {
+    height: 50px;
+    width: 40%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+
+
+  

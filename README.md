@@ -6,6 +6,10 @@ A brief description of your project.
 
 ## Table of Contents
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 
 ## Installation
@@ -14,31 +18,17 @@ A brief description of your project.
 - 개인의 프로필 페이지에 좋아하는 구절 등 책에 대한 정보를 작성하고 판매하고 싶은 책을 등록할 수 있습니다.
 -검색을 통해 책 취향이 비슷한 다른 유저들의 피드를 구경할 수 있습니다.
 -다양한 유저들을 팔로우하며 마음에 드는 게시글에 좋아요를 누르거나 댓글을 작성할 수 있습니다.
->[!example] 일정
->11.11 CT 예정<BR>
->10.31 화 온라인 설명회
-```html
-<kbd style="background-color: gray; color: white;">11.11 CT 예정</kbd>
-<kbd style="background-color: green; color: white;">10.31 화 온라인 설명회</kbd> 색깔 바꾸는법
-
-
- [![example] 일정
- <font color="red">11.11 CT 예정</font><BR>
-> <font color="green">10.31 화 온라인 설명회</font> 색깔 바꾸는법
-
-> [![example](https://your-image-url.jpg)](https://example-link.com)
-> <span style="color:red;">11.11 CT 예정</span><BR>
-> <span style="color:green;">10.31 화 온라인 설명회</span> 색깔 바꾸는법
 
 
 
 
 
 
->[!question] 응애
 
 
-```
+
+
+
 📖 순두부 프렌차이즈 
 readme_mockup2
 

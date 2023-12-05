@@ -1,0 +1,411 @@
+<!-- HTML (index.html) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>간단한 쇼핑몰</title>
+    <style>
+        /* CSS (styles.css) */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background-color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        body.scroll-down {
+            background-color: #f0f0f0;
+            /* 스크롤 다운 시 배경색 */
+        }
+
+        body.scroll-up {
+            background-color: #fff;
+            /* 스크롤 업 시 배경색 */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product {
+            width: 200px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            /* 모달 최대 너비 지정 */
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .slider {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slider img {
+            width: 100%;
+            display: none;
+        }
+
+        .details {
+            margin-top: 20px;
+        }
+
+        .content-section {
+            padding: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .content-section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .content-section img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-section:hover img {
+            transform: scale(1.1);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .content-section {
+            padding: 40px;
+            text-align: center;
+            color: #333;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
+        }
+
+        .content-section.active {
+            opacity: 1;
+            transform: translateY(0);
+            background-color: #f0f0f0;
+            /* 변경할 배경색 */
+        }
+
+        .content-section img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-section:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>간단한 쇼핑몰</h1>
+    </header>
+
+    <nav>
+        <a href="#">홈</a>
+        <a href="#">제품 목록</a>
+        <a href="#">고객 서비스</a>
+    </nav>
+
+    <div class="product-list" id="productList">
+        <!-- 제품 목록은 JavaScript에서 동적으로 추가될 예정입니다. -->
+    </div>
+
+    <div id="productModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <div id="imageSlider" class="slider">
+                <!-- 이미지 슬라이더에 대한 내용은 JavaScript에서 동적으로 추가될 예정입니다. -->
+            </div>
+            <div id="productDetails" class="details">
+                <!-- 제품 상세 정보는 JavaScript에서 동적으로 추가될 예정입니다. -->
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section fade-in">
+        <h2>Section 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed ante vel odio luctus auctor eu eu leo.
+            Ut euismod quam eu arcu cursus, in pellentesque arcu malesuada.</p>
+        <img src="https://picsum.photos/800/400" alt="Section 1">
+    </div>
+
+    <div class="content-section fade-in">
+        <h2>Section 2</h2>
+        <p>Curabitur sollicitudin, velit vel tristique convallis, dui nisi dapibus sapien, eget semper purus lacus vel
+            arcu. Nulla facilisi. Sed vel felis non elit scelerisque congue.</p>
+        <img src="https://picsum.photos/800/401" alt="Section 2">
+    </div>
+
+    <div class="content-section fade-in">
+        <h2>Section 3</h2>
+        <p>Integer ut mi id urna tincidunt tincidunt. Ut vel libero nec velit ultrices viverra. Morbi vulputate tellus
+            vel libero laoreet, eget tincidunt purus hendrerit.</p>
+        <img src="https://picsum.photos/800/402" alt="Section 3">
+    </div>
+
+    <div class="content-section fade-in">
+        <h2>Section 4</h2>
+        <p>Phasellus vestibulum rhoncus est, ac consequat arcu venenatis vel. Suspendisse potenti. Fusce non erat vel
+            odio accumsan ultrices. Suspendisse potenti.</p>
+        <img src="https://picsum.photos/800/403" alt="Section 4">
+    </div>
+
+    <div class="content-section fade-in">
+        <h2>Section 5</h2>
+        <p>Aliquam erat volutpat. Aliquam eget metus in tellus finibus scelerisque in a dui. Quisque tincidunt, justo et
+            suscipit pharetra, mi orci dictum felis, vitae scelerisque quam purus quis orci.</p>
+        <img src="https://picsum.photos/800/404" alt="Section 5">
+    </div>
+
+    <footer>
+        <p>&copy; 2023 간단한 쇼핑몰</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+<script>
+    // JavaScript (script.js)
+    $(document).ready(function () {
+        // 간단한 제품 데이터
+        const products = [
+            { id: 1, name: '상품 1', image: 'https://picsum.photos/300/200', price: '$10', images: ['https://picsum.photos/600/400', 'https://picsum.photos/600/401'], description: '상품 1에 대한 설명' },
+            { id: 2, name: '상품 2', image: 'https://picsum.photos/300/200', price: '$20', images: ['https://picsum.photos/600/402', 'https://picsum.photos/600/403'], description: '상품 2에 대한 설명' },
+            { id: 3, name: '상품 3', image: 'https://picsum.photos/300/200', price: '$30', images: ['https://picsum.photos/600/404', 'https://picsum.photos/600/405'], description: '상품 3에 대한 설명' },
+            // ... 더 많은 제품 데이터 추가 가능
+        ];
+
+        // 제품 목록 생성
+        function renderProductList() {
+            const productList = $('#productList');
+            productList.empty();
+
+            products.forEach(product => {
+                const productHTML = `
+            <div class="product" data-id="${product.id}">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>${product.price}</p>
+            </div>
+        `;
+                productList.append(productHTML);
+            });
+        }
+
+        // 모달 표시
+        function showModal(productId) {
+            const product = products.find(item => item.id === productId);
+            const modal = $('#productModal');
+            const slider = $('#imageSlider');
+            const details = $('#productDetails');
+
+            // 이미지 슬라이더에 이미지 추가
+            slider.empty();
+            product.images.forEach(image => {
+                slider.append(`<img src="${image}" alt="${product.name}" class="modal-image">`);
+            });
+
+            // 제품 상세 정보 추가
+            details.html(`
+            <h2>${product.name}</h2>
+            <p>${product.description}</p>
+            <p>가격: ${product.price}</p>
+        `);
+
+            // 모달 표시
+            modal.show();
+
+            // 이미지 슬라이더 초기화
+            let currentIndex = 0;
+            const images = slider.find('.modal-image');
+            images.eq(currentIndex).show();
+
+            // 다음 이미지로 이동하는 함수
+            function showNextImage() {
+                images.eq(currentIndex).hide();
+                currentIndex = (currentIndex + 1) % images.length;
+                images.eq(currentIndex).show();
+            }
+
+            // 이미지 슬라이더 자동 재생
+            const sliderInterval = setInterval(showNextImage, 3000);
+
+            // 모달 닫기 버튼 이벤트
+            $('.close').on('click', function () {
+                modal.hide();
+                clearInterval(sliderInterval); // 슬라이더 자동 재생 중지
+            });
+
+            // 모달 외부 클릭 시 닫기
+            $(window).on('click', function (event) {
+                if (event.target === modal[0]) {
+                    modal.hide();
+                    clearInterval(sliderInterval);
+                }
+            });
+        }
+
+        // 제품 목록 초기 렌더링
+        renderProductList();
+
+        // 제품 클릭 시 모달 표시
+        $('#productList').on('click', '.product', function () {
+            const productId = $(this).data('id');
+            showModal(productId);
+        });
+
+        // 스크롤 이벤트 추가
+        let lastScrollTop = 0;
+        $(window).on('scroll', function () {
+            const currentScrollTop = $(this).scrollTop();
+
+            if (currentScrollTop > lastScrollTop) {
+                // 스크롤 다운 시
+                $('body').removeClass('scroll-up').addClass('scroll-down');
+            } else {
+                // 스크롤 업 시
+                $('body').removeClass('scroll-down').addClass('scroll-up');
+            }
+
+            lastScrollTop = currentScrollTop;
+        });
+
+    });
+    // 스크롤 이벤트 추가
+    let lastScrollTop = 0;
+    $(window).on('scroll', function () {
+        const currentScrollTop = $(this).scrollTop();
+
+        if (currentScrollTop > lastScrollTop) {
+            // 스크롤 다운 시
+            $('body').removeClass('scroll-up').addClass('scroll-down');
+        } else {
+            // 스크롤 업 시
+            $('body').removeClass('scroll-down').addClass('scroll-up');
+        }
+
+        // 섹션 배경색 및 이미지 효과
+        $('.content-section').each(function () {
+            const sectionOffset = $(this).offset().top;
+            const sectionHeight = $(this).outerHeight();
+
+            if (currentScrollTop > sectionOffset - window.innerHeight / 2 && currentScrollTop < sectionOffset + sectionHeight) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+
+        lastScrollTop = currentScrollTop;
+    });
+</script>

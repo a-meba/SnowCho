@@ -7,7 +7,7 @@ admin ID : <BR>
 admin PW : <BR>
 user ID :<BR>
 user PW :<BR>
-[P] 따봉
+- [p]  p는 따봉
 
 
 ## Table of Contents

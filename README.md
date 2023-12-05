@@ -46,11 +46,14 @@ A brief description of your project. <br>
 
 
 ## 팀 소개
-
+<center>
 | 심규성 | 황보창규 |
 |----------|----------|
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
+
+</center>
+
 
 
 📖 순두부 프렌차이즈 

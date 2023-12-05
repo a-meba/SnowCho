@@ -47,7 +47,7 @@ A brief description of your project. <br>
 
 ## 팀 소개
 
-| Header 1 | Header 2 |
+| 심규성 | 황보창규 |
 |----------|----------|
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |

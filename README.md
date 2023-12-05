@@ -43,13 +43,11 @@ A brief description of your project. <br>
 
 
 ## 팀 소개
-<center>
 | 심규성 | 황보창규 |
-|----------|----------|
-| Cell 1   | Cell 2   |
-| Cell 3   | Cell 4   |
+|:---------:|:---------:|
+|   ![Image 1](url1)  |   ![Image 2](url2)  |
+|   ![Image 3](url3)  |   ![Image 4](url4)  |
 
-</center>
 
 
 

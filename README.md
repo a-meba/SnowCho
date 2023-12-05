@@ -17,32 +17,7 @@ A brief description of your project.
 -다양한 유저들을 팔로우하며 마음에 드는 게시글에 좋아요를 누르거나 댓글을 작성할 수 있습니다.
 
 
-```bash
-npm install
-
-
-const example = require('example');
-// Your code here
-
-
-
-# PoorSoftTofu 
-
-project name = "" <br>
-since = "2023" <br>
-start = "12.04" <br>
-end = "" <br>
-
-<hr><br>
-
-<h3>using programm</h3> <br>
-. java <br>
-. oracle sql <br>
-. java script <br>
-. html <br>
-. css <br>
-. jsp <br>
-
+```
 📖 순두부 프렌차이즈 
 readme_mockup2
 

@@ -7,7 +7,7 @@ admin ID : <BR>
 admin PW : <BR>
 user ID :<BR>
 user PW :<BR>
-- [p]  p는 따봉
+[p]  p는 따봉
 - [c] c는 반대따봉
 - [l] l는 아이디어
 - [!] !는 !

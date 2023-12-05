@@ -20,8 +20,7 @@ A brief description of your project.
 >10.31 화 온라인 설명회
 
 
-[!question] 응애
-[!question] 응애
+>[!question] 응애
 
 
 ```

@@ -19,8 +19,9 @@ A brief description of your project.
 >11.11 CT 예정<BR>
 >10.31 화 온라인 설명회
 
-> [![example] 일정
-> <font color="red">11.11 CT 예정</font><BR>
+
+ [![example] 일정
+ <font color="red">11.11 CT 예정</font><BR>
 > <font color="green">10.31 화 온라인 설명회</font> 색깔 바꾸는법
 
 > [![example](https://your-image-url.jpg)](https://example-link.com)

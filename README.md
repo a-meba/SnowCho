@@ -18,6 +18,9 @@ A brief description of your project.
 >[!example] 일정
 >11.11 CT 예정<BR>
 >10.31 화 온라인 설명회
+```html
+<kbd style="background-color: gray; color: white;">11.11 CT 예정</kbd>
+<kbd style="background-color: green; color: white;">10.31 화 온라인 설명회</kbd> 색깔 바꾸는법
 
 
  [![example] 일정
@@ -27,6 +30,9 @@ A brief description of your project.
 > [![example](https://your-image-url.jpg)](https://example-link.com)
 > <span style="color:red;">11.11 CT 예정</span><BR>
 > <span style="color:green;">10.31 화 온라인 설명회</span> 색깔 바꾸는법
+
+
+
 
 
 

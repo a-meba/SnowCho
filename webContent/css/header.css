@@ -11,12 +11,10 @@ header {
     background-color: rgba(255,255,255,0.9);
     /*background-color: rgba(244, 241, 241,0.9);*/
     /*border-bottom: 1px solid #ebe3e0;*/
-    
     position: fixed;
     top: 0;
     left: 0;
     z-index: 9999;
-    
     /*outline: 1px solid red;*/
 }
 
@@ -36,7 +34,6 @@ header:after {
 header .inner {
     height: 100%;
     position: relative;
-    
     /*outline: 1px solid;*/
 }
 
@@ -84,7 +81,7 @@ header #gnb {
     font-family: 'Noto Serif KR', serif;
     font-weight: 500;
     font-size: 18px;
-    color: #333;
+    color: white;
     
     position: relative;
     
@@ -97,7 +94,7 @@ header #gnb {
     width: 0;
     height: 16px;
     border-radius: 12px 0 12px 0;
-    background-color: #fbd2d0;
+    background-color: #553e3c;
     
     position: absolute;
     top: 50%;
@@ -128,14 +125,14 @@ header #gnb {
 }
 
 #gnb>ul>li ul li a {
-    color: #333;
+    color: white;
     font-weight: 300;
     letter-spacing: -0.6px;
 }
 
 header .lnb {
     line-height: 40px;
-    font-size: 14px;
+    font-size: 15px;
     
     position: absolute;
     right: 0;
@@ -149,7 +146,7 @@ header .lnb li~li {
 }
 
 header .lnb li a {
-    color: #666;
+    color: white;
 }
 
 header .lnb li:hover a {
@@ -162,7 +159,6 @@ header .lnb li a img {
     vertical-align: text-bottom;
     transform: translateY(2px);
     margin-right: 8px;
-    
     transition: all 0.4s;
 }
 

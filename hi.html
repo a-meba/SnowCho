@@ -1,233 +1,401 @@
-<!-- HTML (index.html) -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>간단한 쇼핑몰</title>
-    <style>
-        /* CSS (styles.css) */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            transition: background-color 0.5s ease;
-            overflow-x: hidden;
-        }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Noto+Serif+KR:wght@200;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico">
 
-        body.scroll-down {
-            background-color: #f0f0f0;
-            /* 스크롤 다운 시 배경색 */
-        }
+    <title>불쌍한 순두부</title>
+    <link rel="stylesheet" href="css/hi.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/title.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/footer.css">
 
-        body.scroll-up {
-            background-color: #fff;
-            /* 스크롤 업 시 배경색 */
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #444;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .product-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-        }
-
-        .product {
-            width: 200px;
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 800px;
-            /* 모달 최대 너비 지정 */
-            background-color: #fff;
-            border-radius: 10px;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-
-        .slider {
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .slider img {
-            width: 100%;
-            display: none;
-        }
-
-        .details {
-            margin-top: 20px;
-        }
-
-        .content-section {
-            padding: 40px;
-            text-align: center;
-            color: #333;
-        }
-
-        .content-section:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .content-section img {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .content-section:hover img {
-            transform: scale(1.1);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .content-section {
-            padding: 40px;
-            text-align: center;
-            color: #333;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
-        }
-
-        .content-section.active {
-            opacity: 1;
-            transform: translateY(0);
-            background-color: #f0f0f0;
-            /* 변경할 배경색 */
-        }
-
-        .content-section img {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .content-section:hover img {
-            transform: scale(1.1);
-        }
-    </style>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <body>
-
     <header>
-        <h1>간단한 쇼핑몰</h1>
+        <div class="inner">
+            <h1 class="logo">
+                <a href="index.html"><img src="img/logo.jpg" alt="메인으로"></a>
+            </h1>
+
+            <nav id="gnb">
+                <ul>
+                    <li>
+                        <a href="sub/about.html">스토리</a>
+                        <ul>
+                            <li><a href="sub/about.html">소개</a></li>
+                            <li><a href="sub/identity.html">아이덴티티</a></li>
+                            <li><a href="sub/tea-story.html">두부 이야기</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub/blending.html">메뉴</a>
+                        <ul>
+                            <li><a href="sub/blending.html">순두부</a></li>
+                            <li><a href="sub/drink.html">두부</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub/product.html">상품삭제</a>
+                        <ul>
+                            <li><a href="sub/product.html">상품</a></li>
+                        </ul>
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        <a href="sub/notice.html">소식</a>
+                        <ul>
+                            <li><a href="sub/notice.html">공지사항</a></li>
+                            <li><a href="sub/event.html">이벤트</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="sub/compete.html">COMPANY</a>
+                        <ul>
+                            <li><a href="sub/compete.html">의 경쟁력</a></li>
+                            <li><a href="sub/guide.html">제휴문의</a></li>
+                            <li><a href="sub/consult.html">고객의 소리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <ul class="lnb">
+                <li>
+                    <a href="sub/store.html"><img src="./img/icons8-수색-30.png" alt="매장찾기">매장찾기</a>
+                </li>
+            </ul>
+        </div>
     </header>
-
-    <nav>
-        <a href="#">홈</a>
-        <a href="#">제품 목록</a>
-        <a href="#">고객 서비스</a>
-    </nav>
-
-    <div class="product-list" id="productList">
-        <!-- 제품 목록은 JavaScript에서 동적으로 추가될 예정입니다. -->
-    </div>
-
-    <div id="productModal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content">
-            <div id="imageSlider" class="slider">
-                <!-- 이미지 슬라이더에 대한 내용은 JavaScript에서 동적으로 추가될 예정입니다. -->
+    <main class="main">
+        <div class="container">
+            <div class="visual-box" id="visual0">
+                <a href="https://www.instagram.com/p/CTlQ-64JnSc/?utm_source=ig_web_copy_link">[신메뉴 출시]가을, 사과가 더 맛있어지는
+                    계절 - 양구사과밀크티(hot/iced)</a>
             </div>
-            <div id="productDetails" class="details">
-                <!-- 제품 상세 정보는 JavaScript에서 동적으로 추가될 예정입니다. -->
+
+            <div class="visual-box" id="visual1">
+                <a href="#">[인기메뉴 재출시] 단호박&amp;흑임자 고소한 가을의 맛 - 단호박라떼/흑임자라떼</a>
+            </div>
+
+            <div class="visual-box" id="visual2">
+                <a href="http://ogadamall.cafe24.com/index.html">[신년 맞이 선물 추천] 오가다몰에서 설 선물을 준비하세요 - 자연담은 차 선물세트</a>
             </div>
         </div>
-    </div>
+
+        <div class="visual-wrap">
+            <a href="#" id="visual1" data-i="0">
+                <div class="visual-box">
+                    <h2 class="vi-tit">가을, 사과가 더<br>맛있어지는 계절</h2>
+                    <div class="vi-menu">
+                        <div class="menu-img">
+                            <img src="" alt="사과가 가득들은 양구사과 밀크티">
+                        </div>
+
+                        <div class="txt-box">
+                            <p class="tag">hot/iced</p>
+                            <p class="menu-name">
+                                <span>양구 사과 밀크티</span>
+                                yanggu<br>apple milktea
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="visual2" data-i="1">
+                <div class="visual-box">
+                    <div class="vi-tit-box">
+                        <p class="tag">인기메뉴 재출시</p>
+                        <h2 class="vi-tit">
+                            <span>단호박 &amp; 흑임자</span>
+                            고소한 가을의 맛
+                        </h2>
+                    </div>
+
+                    <div class="pumpkin">
+                        <p class="menu-name">
+                            <span>단호박 라떼</span>
+                            sweet pumpkin latte
+                        </p>
+
+                        <div class="menu-img">
+                            <img src="/img/icons8-수색-30.png" alt="단호박으로 만든 라떼메뉴">
+                        </div>
+                    </div>
+
+                    <div class="vi-deco">
+                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
+                            alt="단호박">
+                    </div>
+
+                    <div class="sesame">
+                        <p class="menu-name">
+                            <span>흑임자 라떼</span>
+                            black sesame latte
+                        </p>
+
+                        <div class="menu-img">
+                            <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
+                                alt="흑임자로 만든 라떼메뉴">
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" id="visual3" data-i="2">
+                <div class="visual-box">
+                    <div class="tit-box">
+                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
+                            alt="오가다 설선물">
+                    </div>
+                    <div class="prod-img">
+                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
+                            alt="오가다의 한라봉 제품들">
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div id="pager">
+            <ul>
+                <li class="active"><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+    </main>
+
+
+    <!--                                섹션                                    -->
+
+
+
+
+
+    <section>
+
+        <article class="tea">
+            <div class="inner">
+
+                <h2 class="title">불쌍한 순두부 시그니처</h2>
+                <div class="tea-intro">
+                    <div class="intro-left"><img src="img/tea_title_img.jpg" alt="불쌍한 순두부를 소개합니다"></div>
+
+                    <div class="intro-right">
+                        <h3>
+                            <span class="eng">soft tofu</span>
+                            순두부
+                        </h3>
+                        <p class="des">우리 콩으로 얻어진 순두부로<br>건강 효능을 조합한 특별한 순두부</p>
+                        <!--//.tab-menu-->
+                    </div>
+                    <!--//.intro-text-->
+                </div>
+                <!--//.tea-intro-->
+                <!--한방-->
+                <div class="product-list" id="productList">
+                    <!-- 제품 목록은 JavaScript에서 동적으로 추가될 예정입니다. -->
+                </div>
+
+                <div id="productModal" class="modal">
+                    <span class="close">&times;</span>
+                    <div class="modal-content">
+                        <div id="imageSlider" class="slider">
+                            <!-- 이미지 슬라이더에 대한 내용은 JavaScript에서 동적으로 추가될 예정입니다. -->
+                        </div>
+                        <div id="productDetails" class="details">
+                            <!-- 제품 상세 정보는 JavaScript에서 동적으로 추가될 예정입니다. -->
+                        </div>
+                    </div>
+                </div>
+                <!--//한방-->
+
+
+                <!--과일-->
+
+                <!--//과일-->
+
+
+                <!--//허브-->
+
+
+            </div>
+        </article>
+
+        <article class="about">
+            <div class="tit-box">
+                <h2 class="title">
+                    <span>healthy tea brand</span>
+                    오가다 五嘉茶
+                </h2>
+                <p class="mean">다섯가지 아름다운 우리차</p>
+            </div>
+
+            <div class="about-video">
+                <div id="play"><span></span></div>
+                <video poster="img/video_thumb.png" controls muted>
+                    <source src="media/OgadaBrandFilm%20ver1.mp4" type="video/mp4">
+                    <strong>Your browser does not support the video tag.</strong>
+                </video>
+            </div>
+
+            <div class="des-box">
+                <p class="des-tit">우리차로 건강한 에너지를 나누다</p>
+                <p class="des-txt">우리는 전국 방방 곳곳의 한국적인 재료들을 찾아다닙니다<br>한국의 재료로 아름다운 우리 차를 여러분께 전합니다</p>
+            </div>
+        </article>
+        //스타일삭제
+        <article class="best-prod">
+            <div class="inner clear">
+                <h2 class="title">오가다 베스트</h2>
+                <a href="http://ogadamall.cafe24.com/index.html" class="btn-mall" target="_blank">온라인몰 바로가기</a>
+
+                <div class="prod-wrap">
+                    <div class="prod-box">
+                        <a href="http://ogadamall.cafe24.com/product/best-%EC%98%A4%EA%B0%80%EB%8B%A4-%EB%A7%90%EC%B0%A8-30%ED%8F%AC540g-i-%EC%BD%94%EC%8A%A4%ED%8A%B8%EC%BD%94-%ED%8C%90%EB%A7%A4%EC%A0%9C%ED%92%88-i-%EB%A7%90%EC%B0%A8%EB%9D%BC%EB%96%BC/31/category/47/display/1/"
+                            target="_blank"><img src="img/prod_01-h.jpg" alt=""><img src="img/prod_01.jpg"
+                                alt="오가다 말차"></a>
+                        <p>#코스트코_판매 #홈카페 #보성말차</p>
+                        <h3>오가다 말차 30포 (540g)</h3>
+                    </div>
+
+                    <div class="prod-box">
+                        <a href="http://ogadamall.cafe24.com/product/daily-%EA%B1%B4%EA%B0%95%EC%B0%A8%EC%98%A4%EA%B0%80%EB%8B%A4-%ED%98%B8%EB%B0%95%ED%8C%A5%EC%B0%A8-1%ED%8C%A9-2g-20%EA%B0%9C/43/category/49/display/1/"
+                            target="_blank"><img src="img/prod_02-h.jpg" alt=""><img src="img/prod_02.jpg"
+                                alt="오가다 호박팥차"></a>
+                        <p>#건강차 #붓기제거 #티백</p>
+                        <h3>오가다 호박팥차 1팩<br> (2g X 20개)</h3>
+                    </div>
+
+                    <div class="prod-box">
+                        <a href="http://ogadamall.cafe24.com/product/%EA%B1%B4%EA%B0%95%EC%A6%99%EC%98%A4%EA%B0%80%EB%8B%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EC%96%91%EB%B0%B0%EC%B6%94%EC%A6%99-100-1%EB%B0%95%EC%8A%A4-100ml-30%EA%B0%9C%EC%9E%85/68/category/44/display/1/"
+                            target="_blank"><img src="img/prod_03-h.jpg" alt=""><img src="img/prod_03.jpg"
+                                alt="유기농 양배추즙"></a>
+                        <p>#첨가물_제로 #유기농 #비리지않은</p>
+                        <h3>유기농 양배추즙 100%<br>(100ml 30개입)</h3>
+                    </div>
+
+                    <div class="prod-box">
+                        <a href="http://ogadamall.cafe24.com/product/%EC%9D%B4%EB%84%88%EC%A0%A4%EB%A6%AC-%EB%B9%84%ED%83%80%EB%A0%88%EB%AA%AC-%EC%A0%A4%EB%A6%AC%EC%8A%A4%ED%8B%B1-20g-x-15%ED%8F%AC/22/category/45/display/1/"
+                            target="_blank"><img src="img/prod_04-h.jpg" alt=""><img src="img/prod_04.jpg"
+                                alt="이너젤리 비타레몬"></a>
+                        <p>#비타민C #하루한포 #젤리스틱</p>
+                        <h3>이너젤리 비타레몬 젤리스틱<br>(20g X 15포)</h3>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="banner">
+            <div class="inner clear">
+                <div class="text-box">
+                    <p>오가다의 베스트 상품을 가장 저렴하게 즐기는 방법</p>
+                    <h2>혜택받고, 원하는 날에 받으세요!</h2>
+                </div>
+
+                <a href="https://smartstore.naver.com/ogada/category/d0f0548155f6472a9efd33d6242ff93f?cp=1"
+                    class="btn-apply" target="_blank">정기배송 신청하기</a>
+            </div>
+        </article>
+        //스타일 삭제
+        <article class="content">
+            <div class="inner">
+                <h2 class="title">오가다 새소식</h2>
+
+                <div class="content-wrap clear">
+                    <div class="news">
+                        <a href="#"><img src="img/new1.jpg" alt="인기메뉴 재출시! 단호박라떼 & 흑임자라떼 - 에스프레소샷 추가시 500원"></a>
+                        <a href="#"><img src="img/new2.jpg" alt="사과를 더 맛있게 즐기는 방법 오가다 양구사과 밀크티"></a>
+                    </div>
+
+                    <div class="event-wrap">
+                        <div class="event-grp" id="evtGrp">
+                            <a href="http://ogadamall.cafe24.com/product/list.html?cate_no=45" target="_blank"><img
+                                    src="img/news_01.jpg" alt="영양가득 젤리스틱 할인 이벤트 - 9,900원(기간:재고소진시까지)"></a>
+
+                            <a href="https://www.instagram.com/ogada_official/" target="_blank"><img
+                                    src="img/news_04.jpg" alt="오가다 인스타그램 팔로우 이벤트"></a>
+
+                            <a href="http://ogadamall.cafe24.com/index.html" target="_blank"><img src="img/news_03.jpg"
+                                    alt="오가다 한라봉차(국내산 한라봉 100%) - 100원 이벤트 *오가다몰 신규/기존회원 모두에게 제공하는 혜택입니다 *ID당 1회, 네이버페이 구매시 미적용"></a>
+
+                            <a href="http://ogadamall.cafe24.com/product/list.html?cate_no=45" target="_blank"><img
+                                    src="img/news_01.jpg" alt="영양가득 젤리스틱 할인 이벤트 - 9,900원(기간:재고소진시까지)"></a>
+                        </div>
+
+                        <div class="event-pager" id="evtPager">
+                            <ul>
+                                <li class="active"><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="franchise">
+            <div class="fran-tit">
+                <h2>
+                    오가다와 함께 하실<br>
+                    점주님을 모십니다
+                </h2>
+                <p>오가다만의 차별화된 전략으로성공 창업을 지원합니다</p>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="sub/guide.html">
+                        <img src="img/ico_fran-guide-w.png" alt="아이콘">
+                        <h3>
+                            창업안내
+                            <span>인테리어, 창업비용, 절차안내</span>
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="sub/consult.html#cunsult">
+                        <img src="img/ico_mail-w.png" alt="아이콘">
+                        <h3>
+                            1:1 창업문의
+                            <span>FnQ, 상담문의 남기기</span>
+                        </h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="sub/consult.html">
+                        <img src="img/ico_tell-w.png" alt="아이콘">
+                        <h3>
+                            전화문의
+                            <span>지역담당자 연결 / 02-738-0124</span>
+                        </h3>
+                    </a>
+                </li>
+            </ul>
+        </article>
+    </section>
+
+
+
+
+
+
 
     <div class="content-section fade-in">
         <h2>Section 1</h2>
@@ -250,6 +418,8 @@
         <img src="https://picsum.photos/800/402" alt="Section 3">
     </div>
 
+
+
     <div class="content-section fade-in">
         <h2>Section 4</h2>
         <p>Phasellus vestibulum rhoncus est, ac consequat arcu venenatis vel. Suspendisse potenti. Fusce non erat vel
@@ -265,7 +435,9 @@
     </div>
 
     <footer>
-        <p>&copy; 2023 간단한 쇼핑몰</p>
+        <p>주소 : 대구광역시 한국it교육원 사업자등록번호 : 000-00-00000
+            전화 : 053-642-0900 팩스 : 053-642-0900 Email : sundubu@cry.co.kr</p>
+        <p> copyright© 2023 ogada.all rights reserved.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -279,9 +451,9 @@
     $(document).ready(function () {
         // 간단한 제품 데이터
         const products = [
-            { id: 1, name: '상품 1', image: 'https://picsum.photos/300/200', price: '$10', images: ['https://picsum.photos/600/400', 'https://picsum.photos/600/401'], description: '상품 1에 대한 설명' },
-            { id: 2, name: '상품 2', image: 'https://picsum.photos/300/200', price: '$20', images: ['https://picsum.photos/600/402', 'https://picsum.photos/600/403'], description: '상품 2에 대한 설명' },
-            { id: 3, name: '상품 3', image: 'https://picsum.photos/300/200', price: '$30', images: ['https://picsum.photos/600/404', 'https://picsum.photos/600/405'], description: '상품 3에 대한 설명' },
+            { id: 1, name: '순두부찌개', image: 'https://picsum.photos/300/200', price: '9,000', images: ['https://picsum.photos/600/400', 'https://picsum.photos/600/401'], description: '상품 1에 대한 설명' },
+            { id: 2, name: '조개순두부찌개', image: 'https://picsum.photos/300/200', price: '10,000', images: ['https://picsum.photos/600/402', 'https://picsum.photos/600/403'], description: '상품 2에 대한 설명' },
+            { id: 3, name: '초당순두부', image: 'https://picsum.photos/300/200', price: '12,000', images: ['https://picsum.photos/600/404', 'https://picsum.photos/600/405'], description: '상품 3에 대한 설명' },
             // ... 더 많은 제품 데이터 추가 가능
         ];
 

@@ -66,9 +66,9 @@
     font-size: 0;
 }
 
-#visual0 a {background:url(https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg) no-repeat center/cover;}
-#visual1 a {background:url(/img/icons8-수색-30.png) no-repeat center/cover;}
-#visual2 a {background:url(https://cdn-lostark.game.onstove.com/uploadfiles/banner/2430d2ebc945418f959c4de1ecfc7779.jpg) no-repeat center/cover;}
+#visual0 a {background:url(../image700/anilla\ \(2\).png) no-repeat;}
+#visual1 a {background:url() no-repeat center/cover;}
+#visual2 a {background:url() no-repeat center/cover;}
 
 .container .visual-box:first-child {
     display: block;

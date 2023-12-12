@@ -3,15 +3,15 @@ package project.model.member;
 import java.sql.Date;
 
 public class memberDTO {
-    private String user_id;			//PK
+	private String user_id;			//PK
     private String user_name;
-    private String user_password;
+    private String user_passwd;
     private String user_phone;
-    private String user_birthdate;
-    private Date regi_date;			//등록일자
-    private int admin_grade;		//일반유저 = 0, 관리자 = 1
+    private String user_addr;
+    private Date user_birth;			//등록일자
+    private int admingrade;		//일반유저 = 0, 관리자 = 1
     
-//--------------------------------------------------------------------------//
+//---------------------------------------------------------
     
 	public String getUser_id() {
 		return user_id;
@@ -25,11 +25,11 @@ public class memberDTO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public String getUser_password() {
-		return user_password;
+	public String getUser_passwd() {
+		return user_passwd;
 	}
-	public void setUser_password(String user_password) {
-		this.user_password = user_password;
+	public void setUser_passwd(String user_passwd) {
+		this.user_passwd = user_passwd;
 	}
 	public String getUser_phone() {
 		return user_phone;
@@ -37,25 +37,25 @@ public class memberDTO {
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	public String getUser_birthdate() {
-		return user_birthdate;
+	public String getUser_addr() {
+		return user_addr;
 	}
-	public void setUser_birthdate(String user_birthdate) {
-		this.user_birthdate = user_birthdate;
+	public void setUser_addr(String user_addr) {
+		this.user_addr = user_addr;
 	}
-	public Date getRegi_date() {
-		return regi_date;
+	public Date getUser_birth() {
+		return user_birth;
 	}
-	public void setRegi_date(Date regi_date) {
-		this.regi_date = regi_date;
+	public void setUser_birth(Date user_birth) {
+		this.user_birth = user_birth;
 	}
-	public int getAdmin_grade() {
-		return admin_grade;
+	public int getAdmingrade() {
+		return admingrade;
 	}
-	public void setAdmin_grade(int admin_grade) {
-		this.admin_grade = admin_grade;
+	public void setAdmingrade(int admingrade) {
+		this.admingrade = admingrade;
 	}
-
-//--------------------------------------------------------------------------//
+	
+//---------------------------------------------------------
     
 }

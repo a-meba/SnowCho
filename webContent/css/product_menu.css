@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: radial-gradient(circle at 25% 60%, #4e342e 0px, transparent 50%),
+    radial-gradient(circle at 92.3% 7.6%, #4e342e 0px, transparent 50%);
+}
+
+.menu {
+    width: 100%;
+    overflow: hidden;
+}
+  
+.menu > li {
+    width: 100%;
+    text-align: center;
+    line-height: 150px;
+}
+
+.menu a {
+    font-size: 20px;
+    color: black;
+}
+
+.menu > li:hover {
+    background-color: #4e342e;
+    transition-duration: 0.3s;
+}
+.main-product {
+    margin-top: 100px;
+    display: flex;
+}
+
+.menu-section {
+    width: 25%;
+}
+
+.product-section {
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.product-item {
+    display: flex;
+    width: 100%;
+    margin-bottom: 150px;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.product-item img {
+    width: 50%;
+    height: auto;
+    margin-left: 30px;
+}
+
+.product-item h3, .product-item p {
+    text-align: center;
+}

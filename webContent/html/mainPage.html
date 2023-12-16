@@ -1,83 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Noto+Serif+KR:wght@200;400;500&display=swap"
-        rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico">
-
-    <title>SnowCo</title>
-    <link rel="stylesheet" href="css/hi.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/title.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/reset.css">
-
-    <script src="./script/jquery-1.12.4.min.js"></script>
-    <script src="./script/jquery-ui.min.js"></script>
-    <script src="./script/header.js"></script>
-    <script src="./script/index.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Noto+Serif+KR:wght@200;400;500&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon.ico">
+<title>SnowCo</title>
+<link rel="stylesheet" href="../css/hi.css">
+<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/title.css">
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/reset.css">
+<script src="../script/jquery-1.12.4.min.js"></script>
+<script src="../script/jquery-ui.min.js"></script>
+<script src="../script/header.js"></script>
+<script src="../script/index.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
-
 <body>
     <header>
         <div class="inner">
             <h1 class="logo">
-                <a href="index.html"><img src="img/logo.jpg" alt="메인으로"></a>
+                <a href="mainPage.html"><img src="https://github.com/copawl/Image/blob/main/img_save/snowco-remove.png?raw=true" alt="메인으로"></a>
             </h1>
 
             <nav id="gnb">
                 <ul>
                     <li>
-                        <a href="sub/about.html">스토리</a>
+                        <a href="#">스토리</a>
                         <ul>
-                            <li><a href="sub/about.html">소개</a></li>
-                            <li><a href="sub/identity.html">History</a></li>
+                            <li><a href="#intro">소개</a></li>
+                            <li><a href="#history">History</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="sub/blending.html">메뉴</a>
+                        <a href="#">메뉴</a>
                         <ul>
-                            <li><a href="sub/blending.html">Snowco</a></li>
-                            <li><a href="sub/drink.html">Valentine</a></li>
-                            <li><a href="sub/drink.html">Cake</a></li>
+                            <li><a href="#" onclick="move('All_product.html');">Snowco ALL</a></li>
+                            <li><a href="#" onclick="move('');">Valentine</a></li>
+                            <li><a href="#" onclick="move('');">Cake</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="sub/product.html">직영/가맹점</a>
+                        <a href="#">직영점</a>
                         <ul>
-                            <li><a href="sub/product.html">직영점 문의</a></li>
-                            <li><a href="sub/product.html">가맹점 문의</a></li>
-                            <li><a href="sub/product.html">본사 위치 및 정보</a></li>
+                            <li><a href="#directly">직영점 문의</a></li>
+                            <li><a href="#">본사 위치/정보</a></li>
                         </ul>
                     </li>
                     <li>
 
                     </li>
                     <li>
-                        <a href="sub/notice.html">소식</a>
+                        <a href="#">소식</a>
                         <ul>
-                            <li><a href="sub/notice.html">공지사항</a></li>
-                            <li><a href="sub/event.html">이벤트</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">이벤트</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="sub/compete.html">문의 사항</a>
+                        <a href="#">고객센터</a>
                         <ul>
-                            <li><a href="sub/compete.html">문의사항 등록</a></li>
-                            <li><a href="sub/guide.html">문의사항 조회</a></li>
-                            <li><a href="sub/consult.html">문의결과 확인</a></li>
+                            <li><a href="#">고객의 소리</a></li>
+                            <li><a href="#">제휴문의</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
 
             <ul class="lnb">
+                <li>
+                    <a href="sub/store.html"><img src="https://github.com/copawl/Image/blob/main/img_save/icons8-%EC%88%98%EC%83%89-30.png?raw=true" alt="매장찾기">매장찾기</a>
+                </li>
                 <li>
                     <a href="sub/store.html">로그인</a>
                 </li>
@@ -88,136 +86,112 @@
         </div>
     </header>
     <main class="main">
-        <div class="container">
-            <div class="visual-box" id="visual0">
-                <a href="">[신메뉴 출시]가을, 사과가 더 맛있어지는
-                    계절 - 양구사과밀크티(hot/iced)</a>
-            </div>
-
-            <div class="visual-box" id="visual1">
-                <a href="#">[인기메뉴 재출시] 단호박&amp;흑임자 고소한 가을의 맛 - 단호박라떼/흑임자라떼</a>
-            </div>
-
-            <div class="visual-box" id="visual2">
-                <a href="#">[신년 맞이 선물 추천] 오가다몰에서 설 선물을 준비하세요 - 자연담은 차 선물세트</a>
-            </div>
-        </div>
-
-        <div class="visual-wrap">
-            <a href="#" id="visual1" data-i="0">
-                <div class="visual-box">
-                    <h2 class="vi-tit">가을, 사과가 더<br>맛있어지는 계절</h2>
-                    <div class="vi-menu">
-                        <div class="menu-img">
-                            <img src="" alt="사과가 가득들은 양구사과 밀크티">
-                        </div>
-
-                        <div class="txt-box">
-                            <p class="tag">hot/iced</p>
-                            <p class="menu-name">
-                                <span>양구 사과 밀크티</span>
-                                yanggu<br>apple milktea
-                            </p>
-                        </div>
-                    </div>
+        <ul class='mainslider'>
+            <li class='itembox' style="background-image: url('')">
+                <div class='maincontent'>
+                    <h2 class='maintitle'>"스노윙 초코"</h2>
+                    <p class='description'> Lorem ipsum, dolor sit amet consectetur
+                        adipisicing elit. Tempore fuga voluptatum, iure corporis inventore
+                        praesentium nisi. Id laboriosam ipsam enim. </p>
+                    <button>Read More</button>
                 </div>
-            </a>
-
-            <a href="#" id="visual2" data-i="1">
-                <div class="visual-box">
-                    <div class="vi-tit-box">
-                        <p class="tag">인기메뉴 재출시</p>
-                        <h2 class="vi-tit">
-                            <span>단호박 &amp; 흑임자</span>
-                            고소한 가을의 맛
-                        </h2>
-                    </div>
-
-                    <div class="pumpkin">
-                        <p class="menu-name">
-                            <span>단호박 라떼</span>
-                            sweet pumpkin latte
-                        </p>
-
-                        <div class="menu-img">
-                            <img src="/img/icons8-수색-30.png" alt="단호박으로 만든 라떼메뉴">
-                        </div>
-                    </div>
-
-                    <div class="vi-deco">
-                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                            alt="단호박">
-                    </div>
-
-                    <div class="sesame">
-                        <p class="menu-name">
-                            <span>흑임자 라떼</span>
-                            black sesame latte
-                        </p>
-
-                        <div class="menu-img">
-                            <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                                alt="흑임자로 만든 라떼메뉴">
-                        </div>
-                    </div>
+            </li>
+            <li class='itembox' style="background-image: url('https://github.com/copawl/Image/blob/main/img_save/amond.png?raw=true')">
+                <div class='maincontent'>
+                    <h2 class='maintitle'>"초코무스와 초코케이크의 만남"</h2>
+                    <p class='description'> Lorem ipsum, dolor sit amet consectetur
+                        adipisicing elit. Tempore fuga voluptatum, iure corporis inventore
+                        praesentium nisi. Id laboriosam ipsam enim. </p>
+                    <button>Read More</button>
                 </div>
-            </a>
-
-            <a href="#" id="visual3" data-i="2">
-                <div class="visual-box">
-                    <div class="tit-box">
-                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                            alt="오가다 설선물">
-                    </div>
-                    <div class="prod-img">
-                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                            alt="오가다의 한라봉 제품들">
-                    </div>
+            </li>
+            <li class='itembox' style="background-image: url('https://github.com/copawl/Image/blob/main/img_save/cokocake2.jpg?raw=true')">
+                <div class='maincontent'>
+                    <h2 class='maintitle'>"건강을 생각한 하루초코"</h2>
+                    <p class='description'> Lorem ipsum, dolor sit amet consectetur
+                        adipisicing elit. Tempore fuga voluptatum, iure corporis inventore
+                        praesentium nisi. Id laboriosam ipsam enim. </p>
+                    <button>Read More</button>
                 </div>
-            </a>
-        </div>
+            </li>
+            <li class='itembox' style="background-image: url('https://github.com/copawl/Image/blob/main/img_save/heartChoco.jpg?raw=true')">
+                <div class='maincontent'>
+                    <h2 class='maintitle'>"자연에서 가져온 청정카카오"</h2>
+                    <p class='description'>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis
+                        inventore praesentium nisi. Id laboriosam ipsam enim.
+                    </p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class='itembox' style="background-image: url('https://github.com/copawl/Image/blob/main/img_save/darkChoco.jpg?raw=true')">
+                <div class='maincontent'>
+                    <h2 class='maintitle'>"99.9% 다크초코"</h2>
+                    <p class='description'>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis
+                        inventore praesentium nisi. Id laboriosam ipsam enim.
+                    </p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class='itembox' style="background-image: url('https://github.com/copawl/Image/blob/main/img_save/cokocake.jpg?raw=true')">
+                <div class='maincontent'>
+                    <h2 class='maintitle'>"사랑하는 여자친구와?"</h2>
+                    <p class='description'> Lorem ipsum, dolor sit amet consectetur
+                        adipisicing elit. Tempore fuga voluptatum, iure corporis inventore
+                        praesentium nisi. Id laboriosam ipsam enim. </p>
+                    <button>Read More</button>
+                </div>
+            </li>
+        </ul>
+        <nav class='mainnav'>
+            <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
+            <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
+        </nav>
 
-        <div id="pager">
-            <ul>
-                <li class="active"><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
-        </div>
     </main>
-
-
+    <section id="intro">
+        <div class="info" >
+          <h1>SnowCo</h1>
+          <p>
+            물든 얼굴들이 가득한 겨울의 풍경에서 착안한 SnowCo는 차가운 계절을 따뜻하게 만들어주는 초콜릿 브랜드입니다. 
+            눈 내리는 풍경, 순백의 눈더미, 그리고 깨끗한 풍성함의 감성을 담아낸 
+            SnowCo 초콜릿은 순수함과 품격이 어우러진 특별한 맛을 선사합니다.
+            <br><br>
+            우리는 고품질의 원료와 정교한 제조 과정으로 손에 꼽히는 퀄리티의 초콜릿을 만들고 있습니다.
+            SnowCo는 자연에서 찾은 최상급 카카오를 사용하여 고객들에게 현저하게 부드럽고 진한 맛을 선사합니다.
+          </p>
+          <a href="#content" class="button explore">Explore</a>
+        </div>
+        <div class="split-beer">
+          <img
+            class="beer"
+            src="https://github.com/copawl/Image/blob/main/img_save/left.jpg?raw=true" />
+          <img
+            class="beer"
+            src="https://github.com/copawl/Image/blob/main/img_save/center.jpg?raw=true" />
+          <img
+            class="beer"
+            src="https://github.com/copawl/Image/blob/main/img_save/right.jpg?raw=true" />
+        </div>
+      </section>
     <!--                                섹션                                    -->
-
-
-
-
-
     <section>
-
-        <article class="tea">
+        <article class="signature">
             <div class="inner">
-
                 <h2 class="title">Snowco 시그니처</h2>
-                <div class="tea-intro">
-                    <div class="intro-left"><img src="img/tea_title_img.jpg" alt="Snowco를 소개합니다"></div>
-
+                <div class="signature-intro">
                     <div class="intro-right">
                         <h3>
                             <span class="eng">Snowco</span>
                             Chocolate
                         </h3>
-                        <p class="des">우리 콩으로 얻어진 순두부로<br>건강 효능을 조합한 특별한 순두부</p>
-                        <!--//.tab-menu-->
+                        <p class="des"> 입에 넣는 순간 넘치는 풍미<br>부드러운 특별한 초콜릿</p>
                     </div>
-                    <!--//.intro-text-->
-                </div>
-                <!--//.tea-intro-->
-                <!--한방-->
+                </div>             
                 <div class="product-list" id="productList">
                     <!-- 제품 목록은 JavaScript에서 동적으로 추가될 예정입니다. -->
                 </div>
-
                 <div id="productModal" class="modal">
                     <span class="close">&times;</span>
                     <div class="modal-content">
@@ -229,237 +203,175 @@
                         </div>
                     </div>
                 </div>
-                <!--//한방-->
-
-
-                <!--과일-->
-
-                <!--//과일-->
-
-
-                <!--//허브-->
-
-
             </div>
         </article>
 
         <article class="about">
             <div class="tit-box">
                 <h2 class="title">
-                    <span>healthy tea brand</span>
-                    오가다 五嘉茶
+                    <span> SNOWCO</span>
                 </h2>
-                <p class="mean">다섯가지 아름다운 우리차</p>
+                <p class="mean">행복의 맛을 전하세요</p>
             </div>
-
             <div class="about-video">
-                <div id="play"><span></span></div>
-                <video poster="img/video_thumb.png" controls muted>
-                    <source src="media/OgadaBrandFilm%20ver1.mp4" type="video/mp4">
-                    <strong>Your browser does not support the video tag.</strong>
+                 <strong>독특함을 발견하세요</strong>
                 </video>
             </div>
-
             <div class="des-box">
-                <p class="des-tit">우리차로 건강한 에너지를 나누다</p>
-                <p class="des-txt">우리는 전국 방방 곳곳의 한국적인 재료들을 찾아다닙니다<br>한국의 재료로 아름다운 우리 차를 여러분께 전합니다</p>
+                <p class="des-txt">따뜻하고 부드러운 초콜릿 브랜드로 여러분에게 새로운 맛과 풍미를 선사합니다<br>
+                    초콜릿의 본질에 몰두하고, 즐거우면서도 부드러운 초콜릿 경험을 선사합니다.</p>
             </div>
-        </article>
-        //스타일삭제
-        <article class="best-prod">
-            <div class="inner clear">
-                <h2 class="title">오가다 베스트</h2>
-                <a href="http://ogadamall.cafe24.com/index.html" class="btn-mall" target="_blank">온라인몰 바로가기</a>
-
-                <div class="prod-wrap">
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/best-%EC%98%A4%EA%B0%80%EB%8B%A4-%EB%A7%90%EC%B0%A8-30%ED%8F%AC540g-i-%EC%BD%94%EC%8A%A4%ED%8A%B8%EC%BD%94-%ED%8C%90%EB%A7%A4%EC%A0%9C%ED%92%88-i-%EB%A7%90%EC%B0%A8%EB%9D%BC%EB%96%BC/31/category/47/display/1/"
-                            target="_blank"><img src="img/prod_01-h.jpg" alt=""><img src="img/prod_01.jpg"
-                                alt="오가다 말차"></a>
-                        <p>#코스트코_판매 #홈카페 #보성말차</p>
-                        <h3>오가다 말차 30포 (540g)</h3>
-                    </div>
-
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/daily-%EA%B1%B4%EA%B0%95%EC%B0%A8%EC%98%A4%EA%B0%80%EB%8B%A4-%ED%98%B8%EB%B0%95%ED%8C%A5%EC%B0%A8-1%ED%8C%A9-2g-20%EA%B0%9C/43/category/49/display/1/"
-                            target="_blank"><img src="img/prod_02-h.jpg" alt=""><img src="img/prod_02.jpg"
-                                alt="오가다 호박팥차"></a>
-                        <p>#건강차 #붓기제거 #티백</p>
-                        <h3>오가다 호박팥차 1팩<br> (2g X 20개)</h3>
-                    </div>
-
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/%EA%B1%B4%EA%B0%95%EC%A6%99%EC%98%A4%EA%B0%80%EB%8B%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EC%96%91%EB%B0%B0%EC%B6%94%EC%A6%99-100-1%EB%B0%95%EC%8A%A4-100ml-30%EA%B0%9C%EC%9E%85/68/category/44/display/1/"
-                            target="_blank"><img src="img/prod_03-h.jpg" alt=""><img src="img/prod_03.jpg"
-                                alt="유기농 양배추즙"></a>
-                        <p>#첨가물_제로 #유기농 #비리지않은</p>
-                        <h3>유기농 양배추즙 100%<br>(100ml 30개입)</h3>
-                    </div>
-
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/%EC%9D%B4%EB%84%88%EC%A0%A4%EB%A6%AC-%EB%B9%84%ED%83%80%EB%A0%88%EB%AA%AC-%EC%A0%A4%EB%A6%AC%EC%8A%A4%ED%8B%B1-20g-x-15%ED%8F%AC/22/category/45/display/1/"
-                            target="_blank"><img src="img/prod_04-h.jpg" alt=""><img src="img/prod_04.jpg"
-                                alt="이너젤리 비타레몬"></a>
-                        <p>#비타민C #하루한포 #젤리스틱</p>
-                        <h3>이너젤리 비타레몬 젤리스틱<br>(20g X 15포)</h3>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="banner">
-            <div class="inner clear">
-                <div class="text-box">
-                    <p>오가다의 베스트 상품을 가장 저렴하게 즐기는 방법</p>
-                    <h2>혜택받고, 원하는 날에 받으세요!</h2>
-                </div>
-
-                <a href="https://smartstore.naver.com/ogada/category/d0f0548155f6472a9efd33d6242ff93f?cp=1"
-                    class="btn-apply" target="_blank">정기배송 신청하기</a>
-            </div>
-        </article>
-        //스타일 삭제
-        <article class="content">
-            <div class="inner">
-                <h2 class="title">오가다 새소식</h2>
-
-                <div class="content-wrap clear">
-                    <div class="news">
-                        <a href="#"><img src="img/new1.jpg" alt="인기메뉴 재출시! 단호박라떼 & 흑임자라떼 - 에스프레소샷 추가시 500원"></a>
-                        <a href="#"><img src="img/new2.jpg" alt="사과를 더 맛있게 즐기는 방법 오가다 양구사과 밀크티"></a>
-                    </div>
-
-                    <div class="event-wrap">
-                        <div class="event-grp" id="evtGrp">
-                            <a href="http://ogadamall.cafe24.com/product/list.html?cate_no=45" target="_blank"><img
-                                    src="img/news_01.jpg" alt="영양가득 젤리스틱 할인 이벤트 - 9,900원(기간:재고소진시까지)"></a>
-
-                            <a href="https://www.instagram.com/ogada_official/" target="_blank"><img
-                                    src="img/news_04.jpg" alt="오가다 인스타그램 팔로우 이벤트"></a>
-
-                            <a href="http://ogadamall.cafe24.com/index.html" target="_blank"><img src="img/news_03.jpg"
-                                    alt="오가다 한라봉차(국내산 한라봉 100%) - 100원 이벤트 *오가다몰 신규/기존회원 모두에게 제공하는 혜택입니다 *ID당 1회, 네이버페이 구매시 미적용"></a>
-
-                            <a href="http://ogadamall.cafe24.com/product/list.html?cate_no=45" target="_blank"><img
-                                    src="img/news_01.jpg" alt="영양가득 젤리스틱 할인 이벤트 - 9,900원(기간:재고소진시까지)"></a>
-                        </div>
-
-                        <div class="event-pager" id="evtPager">
-                            <ul>
-                                <li class="active"><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="franchise">
-            <div class="fran-tit">
-                <h2>
-                    오가다와 함께 하실<br>
-                    점주님을 모십니다
-                </h2>
-                <p>오가다만의 차별화된 전략으로성공 창업을 지원합니다</p>
-            </div>
-
-            <ul>
-                <li>
-                    <a href="sub/guide.html">
-                        <img src="img/ico_fran-guide-w.png" alt="아이콘">
-                        <h3>
-                            창업안내
-                            <span>인테리어, 창업비용, 절차안내</span>
-                        </h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="sub/consult.html#cunsult">
-                        <img src="img/ico_mail-w.png" alt="아이콘">
-                        <h3>
-                            1:1 창업문의
-                            <span>FnQ, 상담문의 남기기</span>
-                        </h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="sub/consult.html">
-                        <img src="img/ico_tell-w.png" alt="아이콘">
-                        <h3>
-                            전화문의
-                            <span>지역담당자 연결 / 02-738-0124</span>
-                        </h3>
-                    </a>
-                </li>
-            </ul>
         </article>
     </section>
-
-
-
-
-
-
-
-    <div class="content-section fade-in">
-        <h2>Section 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed ante vel odio luctus auctor eu eu leo.
-            Ut euismod quam eu arcu cursus, in pellentesque arcu malesuada.</p>
-        <img src="https://picsum.photos/800/400" alt="Section 1">
+    <div class="content-section fade-in" id = "history">
+        <div class="content-inner">
+            <h2>SnowCo 브랜드의 탄생</h2><br><br>
+            <p>
+                SnowCo는 2023년, 한국에서 최초로 선보이는 초콜릿 테이크아웃 전문점으로 탄생했습니다. <br>
+                미지의 세계에서 창조된 샤를르르 녹는 초코케이크의 미소를 이미 느껴보셨나요? <br>
+                우리는 진한 초콜릿의 감미로움과 뛰어난 품질을 담아, <br>
+                고객들에게 독특하고 특별한 즐거움을 선사하고 있습니다.<br><br>
+                우리의 초콜릿은 최고급 재료와 정교한 솜씨로 조성되어, <br>
+                각각의 맛이 섬세하고 특유의 독특함을 자랑합니다. SnowCo는 단순히 초콜릿이 아닌, <br>
+                풍부한 감각과 독특한 경험을 선사하는 공간으로, <br>
+                여러분의 감성을 사로잡을 달콤한 여행을 제안합니다. <br>
+                행복의 맛을 찾아가는 특별한 순간, 그 특별한 곳이 바로 SnowCo입니다. <br>
+                우리의 다양한 제품 라인이 여러분을 행복으로 안내합니다.<br>
+            </p>
+        </div>
+        <div class="content-inner">
+            <img src="https://github.com/copawl/Image/blob/main/img_save/land.jpg?raw=true" alt="Section 1">
+        </div>
     </div>
-
     <div class="content-section fade-in">
-        <h2>Section 2</h2>
-        <p>Curabitur sollicitudin, velit vel tristique convallis, dui nisi dapibus sapien, eget semper purus lacus vel
-            arcu. Nulla facilisi. Sed vel felis non elit scelerisque congue.</p>
-        <img src="https://picsum.photos/800/401" alt="Section 2">
+        <div class="content-inner">
+            <img src="https://github.com/copawl/Image/blob/main/img_save/cokobar.jpg?raw=true" alt="Section 2">
+        </div>
+        <div class="content-inner">
+            <h2>chocolate</h2>
+            <p>다양한 맛과 풍성한 즐거음을 SnowCo 바<br>
+                밀크,아몬드,쿠키앤크림 등 다양하고 풍성한
+                허쉬바와 함께 행복한 순간을 즐기세요
+                </p>
+        </div>
     </div>
-
     <div class="content-section fade-in">
-        <h2>Section 3</h2>
-        <p>Integer ut mi id urna tincidunt tincidunt. Ut vel libero nec velit ultrices viverra. Morbi vulputate tellus
-            vel libero laoreet, eget tincidunt purus hendrerit.</p>
-        <img src="https://picsum.photos/800/402" alt="Section 3">
+        <div class="content-inner">
+            <h2>키세스로 사랑을 전하세요!</h2>
+                <p>사랑을 전하는 가장 달콤한 방법
+                    키세스 밀크 초콜릿부터 다크 초콜릿, 그리고 아몬드와 쿠키앤크림까지
+                    일상에서 달콤한 행복을 나누세요!</p>
+        </div>
+        <div class="content-inner">
+            <img src="https://github.com/copawl/Image/blob/main/img_save/kisess.jpg?raw=true" alt="Section 1">
+        </div>
     </div>
-
-
-
-    <div class="content-section fade-in">
-        <h2>Section 4</h2>
-        <p>Phasellus vestibulum rhoncus est, ac consequat arcu venenatis vel. Suspendisse potenti. Fusce non erat vel
-            odio accumsan ultrices. Suspendisse potenti.</p>
-        <img src="https://picsum.photos/800/403" alt="Section 4">
-    </div>
-
-    <div class="content-section fade-in">
-        <h2>Section 5</h2>
-        <p>Aliquam erat volutpat. Aliquam eget metus in tellus finibus scelerisque in a dui. Quisque tincidunt, justo et
-            suscipit pharetra, mi orci dictum felis, vitae scelerisque quam purus quis orci.</p>
-        <img src="https://picsum.photos/800/404" alt="Section 5">
-    </div>
-
-    <footer>
-        <p>주소 : 대구광역시 한국it교육원 사업자등록번호 : 000-00-00000
-            전화 : 053-642-0900 팩스 : 053-642-0900 Email : sundubu@cry.co.kr</p>
-        <p> copyright© 2023 ogada.all rights reserved.</p>
+    <article class="franchise" id="directly">
+        <div class="fran-tit">
+            <h2>
+                SnowCo와 함께 하실<br>
+                점주님을 모십니다
+            </h2>
+            <p>SnowCo만의 차별화된 전략으로성공 창업을 지원합니다</p>
+        </div>
+        <ul>
+            <li>
+                <a href="sub/guide.html">
+                    <img src="https://github.com/copawl/Image/blob/main/img_save/note2.png?raw=true" alt="아이콘">
+                    <h3>
+                        창업안내
+                        <span>인테리어, 창업비용, 절차안내</span>
+                    </h3>
+                </a>
+            </li>
+            <li>
+                <a href="sub/consult.html#cunsult">
+                    <img src="https://github.com/copawl/Image/blob/main/img_save/mesege.png?raw=true" alt="아이콘">
+                    <h3>
+                        1:1 창업문의
+                        <span>FnQ, 상담문의 남기기</span>
+                    </h3>
+                </a>
+            </li>
+            <li>
+                <a href="sub/consult.html">
+                    <img src="https://github.com/copawl/Image/blob/main/img_save/phone.png?raw=true" alt="아이콘">
+                    <h3>
+                        전화문의
+                        <span>지역담당자 연결 / 02-738-0124</span>
+                    </h3>
+                </a>
+            </li>
+        </ul>
+    </article>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="About">
+                    <h6>About</h6>
+                    <p class="footer-title">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the
+                        upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or
+                        snippets as the code wants to be simple. We will help programmers build up concepts in different
+                        programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android,
+                        SQL and Algorithm.</p>
+                </div>
+                <div class="Categories">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="http://scanfcode.com/category/c-language/">JAVA</a></li><br>
+                        <li><a href="http://scanfcode.com/category/front-end-development/">HTML / CSS / script</a></li><br>
+                        <li><a href="http://scanfcode.com/category/back-end-development/">ORCLE DB</a></li><br>
+                        <li><a href="http://scanfcode.com/category/java-programming-language/">JSP</a></li><br>
+                        <li><a href="http://scanfcode.com/category/android/">SPRING</a></li><br>
+                        <li><a href="http://scanfcode.com/category/templates/">SPRING BOOT</a></li><br>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="ftbox">
+                    <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by sim | Hwangbo
+                    </p>
+                    <ul class="social-icons">
+                        <li><a class="git" href="https://github.com/a-meba/SnowCho/tree/main"><i class="fa-git"></i></a></li>
+                        <li><a class="bing" href="https://www.bing.com/images/create?FORM=GENILP"><i class="fa-bing"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="script.js"></script>
 </body>
-
 </html>
-
 <script>
+      $('nav ul li a').on('click', function (event) {
+    event.preventDefault(); // 기본 링크 동작 방지
+
+    // href 속성에서 대상 섹션의 ID 가져오기
+            var targetId = $(this).attr('href');
+
+    // jQuery animate를 사용하여 대상 섹션으로 부드럽게 스크롤
+            $('html, body').animate({
+             scrollTop: $(targetId).offset().top
+         }, 800); // 스크롤 속도 조절 가능 (밀리초 단위)
+    });
+    const mainslider = document.querySelector('.mainslider');
+
+    function activate(e) {
+        const items = document.querySelectorAll('.itembox');
+        e.target.matches('.next') && mainslider.append(items[0])
+        e.target.matches('.prev') && mainslider.prepend(items[items.length - 1]);
+    }
+
+    document.addEventListener('click', activate, false);
     // JavaScript (script.js)
     $(document).ready(function () {
         // 간단한 제품 데이터
         const products = [
-            { id: 1, name: '순두부찌개', image: 'https://picsum.photos/300/200', price: '9,000', images: ['https://picsum.photos/600/400', 'https://picsum.photos/600/401'], description: '상품 1에 대한 설명' },
-            { id: 2, name: '조개순두부찌개', image: 'https://picsum.photos/300/200', price: '10,000', images: ['https://picsum.photos/600/402', 'https://picsum.photos/600/403'], description: '상품 2에 대한 설명' },
-            { id: 3, name: '초당순두부', image: 'https://picsum.photos/300/200', price: '12,000', images: ['https://picsum.photos/600/404', 'https://picsum.photos/600/405'], description: '상품 3에 대한 설명' },
+            { id: 1, name: '초코1번', image: 'https://i.postimg.cc/P5KhRgdh/chocolate-2.jpg', price: '9,000', images: ['https://i.postimg.cc/wMdf9r0j/chocolate-2.jpg', ''], description: '상품 1에 대한 설명' },
+            { id: 2, name: '저세상초코', image: 'https://i.postimg.cc/xd8Y04mr/chocolate-3.jpg', price: '10,000', images: ['https://i.postimg.cc/WbpZP0nB/chocolate-3.jpg'], description: '상품 2에 대한 설명' },
+            { id: 3, name: '죽다산초코', image: 'https://i.postimg.cc/9FDG7mjz/chocolate-4.jpg', price: '12,000', images: ['https://i.postimg.cc/kMK6Sf13/chocolate-4.jpg'], description: '상품 3에 대한 설명' },
             // ... 더 많은 제품 데이터 추가 가능
         ];
 
@@ -508,6 +420,7 @@
             const images = slider.find('.modal-image');
             images.eq(currentIndex).show();
 
+
             // 다음 이미지로 이동하는 함수
             function showNextImage() {
                 images.eq(currentIndex).hide();
@@ -524,6 +437,8 @@
                 clearInterval(sliderInterval); // 슬라이더 자동 재생 중지
             });
 
+
+
             // 모달 외부 클릭 시 닫기
             $(window).on('click', function (event) {
                 if (event.target === modal[0]) {
@@ -536,11 +451,15 @@
         // 제품 목록 초기 렌더링
         renderProductList();
 
+
+
         // 제품 클릭 시 모달 표시
         $('#productList').on('click', '.product', function () {
             const productId = $(this).data('id');
             showModal(productId);
         });
+
+
 
         // 스크롤 이벤트 추가
         let lastScrollTop = 0;
@@ -586,4 +505,23 @@
 
         lastScrollTop = currentScrollTop;
     });
+
+    var swiper = new Swiper(".swiper", {
+        grabCursor: true,
+        speed: 500,
+        effect: "slide",
+        loop: true,
+        mousewheel: {
+            invert: false,
+            sensitivity: 1,
+        },
+        scrollbar: {
+            el: ".swiper-scrollbar",
+            hide: false,
+        },
+    });
+
+    function move(value1) {
+        location.href = value1;
+    }
 </script>

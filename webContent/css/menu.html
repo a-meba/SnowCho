@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/scss/menu.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<input id="bluepurple" class="variation" type="radio" value="1" name="color" checked>
+<label for="bluepurple"></label>
+
+<input id="sunset" class="variation" type="radio" value="2" name="color">
+<label for="sunset"></label>
+
+<input id="godiva" class="variation" type="radio" value="3" name="color">
+<label for="godiva"></label>
+
+<input id="dark" class="variation" type="radio" value="4" name="color">
+<label for="dark"></label>
+
+<input id="pinkaru" class="variation" type="radio" value="5" name="color">
+<label for="pinkaru"></label>
+
+<main>
+	<section class="results-header">
+		<h1>Find Snowco near you.</h1>
+		<div class="results-header__option">
+			<div class="option__button option--grid selected">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span>Grid</span>
+			</div>
+			<div class="option__button option--list">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span>List</span>
+			</div>
+		</div>
+	</section>
+
+	<div class="filter-section__wrapper">
+		<section class="filter-section">
+			<h6>Filters</h6>
+			<div class="filters">
+				<h5 class="filters__title">Snowco Type</h5>
+				<div class="filters__item">
+					<div class="checkbox">
+						<input id="checkbox-1" type="checkbox">
+						<label for="checkbox-1">Puppy<span class="box"></span>
+							<div class="tooltip top" data-tooltip="Younger than 18 months.">
+								<span><i class="icon-info"></i></span>
+							</div>
+						</label>
+					</div>
+					<span class="badge status-primary">10</span>
+				</div>
+				<!-- (다른 Dog Type 항목들도 유사한 구조로 추가) -->
+
+				<h5 class="filters__title">Snowco Size</h5>
+				<div class="filters__item">
+					<div class="checkbox">
+						<input id="checkbox-5" type="checkbox">
+						<label for="checkbox-5">Small<span class="box"></span></label>
+					</div>
+					<span class="badge status-primary">9</span>
+				</div>
+				<!-- (다른 Dog Size 항목들도 유사한 구조로 추가) -->
+			</div>
+		</section>
+	</div>
+
+	<section class="results-section results--grid">
+		<!-- 반복문 시작 -->
+		<div class="profile">
+			<div class="profile__image">
+				<img src="img/heartChoco.jpg" alt="Doggo">
+			</div>
+			<div class="profile__info">
+				<h3>Snowco Snowco</h3>
+				<p class="profile__info__extra">A very good boi that loves playing fetch and ice-cream! Gentle with
+					everyone. Scared of the rain.</p>
+			</div>
+			<div class="profile__stats">
+
+				<p class="profile__stats__title">Type</p>
+				<h5 class="profile__stats__info">Puppy</h5>
+			</div>
+			<div class="profile__stats">
+				<p class="profile__stats__title">Size</p>
+				<h5 class="profile__stats__info">Medium</h5>
+			</div>
+			<div class="profile__stats">
+				<p class="profile__stats__title">Weight</p>
+				<h5 class="profile__stats__info">45 lbs</h5>
+			</div>
+			<div class="profile__cta">
+				<a href="#" class="button">Adopt Snowco!</a>
+			</div>
+		</div>
+		<!-- 반복문 끝 -->
+
+		<!-- 위의 구조를 8번 더 반복 -->
+		<!-- ... (중략) ... -->
+		<div class="profile">
+			<div class="profile__image">
+				<img src="img/cokocake.jpg" alt="Doggo">
+			</div>
+			<div class="profile__info">
+				<h3>Snowco Snowco</h3>
+				<p class="profile__info__extra">A very good boi that loves playing fetch and ice-cream! Gentle with
+					everyone. Scared of the rain.</p>
+			</div>
+			<div class="profile__stats">
+
+				<p class="profile__stats__title">Type</p>
+				<h5 class="profile__stats__info">Puppy</h5>
+			</div>
+			<div class="profile__stats">
+				<p class="profile__stats__title">Size</p>
+				<h5 class="profile__stats__info">Medium</h5>
+			</div>
+			<div class="profile__stats">
+				<p class="profile__stats__title">Weight</p>
+				<h5 class="profile__stats__info">45 lbs</h5>
+			</div>
+			<div class="profile__cta">
+				<a href="#" class="button">Adopt Snowco!</a>
+			</div>
+		</div>
+		<div class="profile">
+			<div class="profile__image">
+				<img src="img/chocolate.jpg" alt="Doggo">
+			</div>
+			<div class="profile__info">
+				<h3>Snowco Snowco</h3>
+				<p class="profile__info__extra">A very good boi that loves playing fetch and ice-cream! Gentle with
+					everyone. Scared of the rain.</p>
+			</div>
+			<div class="profile__stats">
+
+				<p class="profile__stats__title">Type</p>
+				<h5 class="profile__stats__info">Puppy</h5>
+			</div>
+			<div class="profile__stats">
+				<p class="profile__stats__title">Size</p>
+				<h5 class="profile__stats__info">Medium</h5>
+			</div>
+			<div class="profile__stats">
+				<p class="profile__stats__title">Weight</p>
+				<h5 class="profile__stats__info">45 lbs</h5>
+			</div>
+			<div class="profile__cta">
+				<a href="#" class="button">Adopt Snowco!</a>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<footer>
+	<div class="explanation">
+		Part of the <a href="https://codepen.io/collection/DQvYpQ" target="_blank">CSS Grid collection here</a>.
+		<a href="https://codepen.io/oliviale/full/mgWjpq" target="_blank">Part I</a> •
+		<a href="https://codepen.io/oliviale/full/WqwOzv" target="_blank">Part II</a> •
+		<a href="https://codepen.io/oliviale/full/GbmyYx" target="_blank">Part III</a>
+	</div>
+	<div class="social">
+		<a href="https://twitter.com/meowlivia_" target="_blank"><i class="icon-social-twitter icons"></i></a>
+		<a href="https://github.com/oliviale" target="_blank"><i class="icon-social-github icons"></i></a>
+		<a href="https://dribbble.com/oliviale" target="_blank"><i class="icon-social-dribbble icons"></i></a>
+	</div>
+</footer>
+
+<body>
+
+</body>
+<script>
+	//apprearance
+	$("input.variation").on("click", function () {
+		if ($(this).val() > 3) {
+			$("body").css("background", "#111");
+			$("footer").attr("class", "dark");
+		} else {
+			$("body").css("background", "#f9f9f9");
+			$("footer").attr("class", "");
+		}
+	});
+
+	// toggle list vs card view
+	$(".option__button").on("click", function () {
+		$(".option__button").removeClass("selected");
+		$(this).addClass("selected");
+		if ($(this).hasClass("option--grid")) {
+			$(".results-section").attr("class", "results-section results--grid");
+		} else if ($(this).hasClass("option--list")) {
+			$(".results-section").attr("class", "results-section results--list");
+		}
+	});
+
+</script>
+
+</html>

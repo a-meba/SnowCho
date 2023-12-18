@@ -1,0 +1,99 @@
+main {
+    margin-top: 100px;
+}
+body {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(circle at 25% 60%, #4e342e 0px, transparent 50%),
+  radial-gradient(circle at 92.3% 7.6%, #4e342e 0px, transparent 50%);
+  background-repeat: no-repeat;
+  color: #fff; /* 흰색 텍스트 색상으로 대비 향상 */
+  margin: 0; /* 기본 마진 제거하여 전체 폭 표시 보장 */
+  font-family: "Nunito", sans-serif; /* 가독성 향상을 위한 폰트 패밀리 추가 */
+  line-height: 1.6; /* 가독성 향상을 위한 행 높이 조절 */
+  cursor: default;
+}
+table {
+    margin-top: 70px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    width: 1700px;
+    height: 600px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  
+  }
+  
+  th,td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: black;
+  }
+  
+  th {
+    text-align: left;
+    color: white;
+  }
+  
+  thead {
+    th {
+      background-color: #312727;
+    }
+  }
+  
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgba(255,255,255,0.3);
+      }
+    }
+    td {
+      position: relative;
+      &:hover {
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -9999px;
+          bottom: -9999px;
+          background-color: rgba(255,255,255,0.2);
+          z-index: -1;
+        }
+      }
+    }
+  }
+  
+  .board_sec {
+      width: 90%;
+      height: 90%;
+  }
+  
+  th:first-child,
+  td:first-child {
+      width: 100px; /* Narrower "No" column */
+  }
+  
+  th:nth-child(2),
+  td:nth-child(2) {
+      width: 800px; /* Wider "제목" column */
+  }
+  
+  th:nth-child(3),
+  td:nth-child(3) {
+      width: 100px;/* Wider "제목" column */
+  }
+  
+  th:nth-child(4),
+  td:nth-child(4) {
+      width: 100px;/* Wider "제목" column */
+  }
+  .topvalue {
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 100px;
+    margin-top: 150px;
+    color: black;
+  }

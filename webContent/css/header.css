@@ -61,10 +61,6 @@ header #gnb {
    
     /*outline: 1px solid lime;*/
 }
-#gnb>ul {
-    
-}
-
 #gnb>ul>li {
    width: 110px;
    
@@ -146,9 +142,6 @@ header .lnb {
     top: 30px;
     
 }
-header .lnb li {
-    
-}
 
 header .lnb li~li {
     
@@ -194,11 +187,3 @@ header .lnb li a.h-sns:hover {
     
 }
 
-/* 삭제여부 */
-header .lnb li a.insta {
-    background: url(/img/chocolate.jpg) no-repeat center/cover;
-}
-
-header .lnb li a.youtube {
-    background: url(../img/sns_youtube-pink.png) no-repeat center/cover;
-}

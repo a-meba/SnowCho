@@ -5,8 +5,8 @@
 
 
 배포 URL : https://a-meba.github.io/SnowCho/ <BR>
-admin ID : <BR>
-admin PW : <BR>
+admin ID : testadmin@test.com<BR>
+admin PW : 1234<BR>
 user ID :<BR>
 user PW :<BR>
 

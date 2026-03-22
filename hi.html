@@ -3,139 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>불쌍한 순두부 - 관리자 모드</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <title>불쌍한 순두부 - 통합 관리 시스템</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
-        /* 기본 리셋 및 폰트 설정 */
-        * { margin: 0; padding: 0; box-box: border-box; }
+        :root {
+            --primary-color: #d9534f;
+            --admin-bg: #2c3e50;
+            --accent-color: #f39c12;
+            --text-dark: #333;
+            --gray-light: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Noto Sans KR', sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
+            color: var(--text-dark); 
             background-color: #fff;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
         ul { list-style: none; }
         a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; border: none; font-family: inherit; transition: 0.2s; }
 
-        /* 관리자 상단 바 */
-        .admin-bar {
-            background: #222;
+        /* Admin Navigation Bar */
+        .admin-nav {
+            background: var(--admin-bg);
             color: #fff;
-            padding: 8px 5%;
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
-        }
-        .admin-bar strong { color: #ffeb3b; }
-        .logout-btn { background: #444; padding: 3px 10px; border-radius: 3px; margin-left: 10px; }
-
-        /* 헤더 디자인 */
-        header {
-            width: 100%;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            background: #fff;
-            border-bottom: 1px solid #eee;
+            font-size: 14px;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1100;
         }
-        .logo img { height: 50px; }
-        
-        #gnb { display: flex; }
-        #gnb > ul { display: flex; gap: 30px; }
-        #gnb > ul > li { position: relative; font-weight: 500; font-size: 17px; }
-        #gnb > ul > li:hover > a { color: #d9534f; }
-        
-        /* 서브메뉴 (Hover) */
-        #gnb ul ul {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 150px;
-            padding: 10px 0;
+        .admin-controls { display: flex; gap: 10px; }
+        .btn-admin {
+            background: rgba(255,255,255,0.15);
+            padding: 8px 16px;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 500;
         }
-        #gnb li:hover ul { display: block; }
-        #gnb ul ul li { padding: 8px 20px; font-size: 14px; }
-        #gnb ul ul li:hover { background: #f9f9f9; }
+        .btn-admin:hover { background: var(--accent-color); }
 
-        /* 메인 비주얼 슬라이드 영역 */
-        .main-visual {
-            height: 450px;
-            background: #f4f1ea;
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 100px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .logo { font-family: 'Noto Serif KR', serif; font-size: 28px; color: var(--primary-color); font-weight: 700; }
+        
+        #gnb > ul { display: flex; gap: 40px; }
+        #gnb > ul > li { position: relative; font-weight: 500; font-size: 17px; }
+        #gnb > ul > li > a { padding: 35px 0; display: block; }
+        #gnb > ul > li:hover > a { color: var(--primary-color); }
+
+        /* Hero Section */
+        .hero {
+            height: 400px;
+            background: #fdf6ec;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Noto Serif KR', serif; font-size: 48px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; color: #666; }
+
+        /* Menu Section */
+        .section { padding: 80px 5%; max-width: 1300px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-family: 'Noto Serif KR', serif; font-size: 36px; margin-bottom: 8px; }
+
+        /* Filter Tabs */
+        .filter-wrap { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        .filter-btn { padding: 10px 25px; border-radius: 25px; background: #eee; font-weight: 500; font-size: 15px; }
+        .filter-btn.active { background: var(--primary-color); color: #fff; }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+        
+        .card-img { width: 100%; height: 240px; position: relative; overflow: hidden; background: #f0f0f0; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Card Admin Buttons */
+        .card-admin-btns {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 6px;
+            z-index: 100; /* Ensure buttons are clickable */
+        }
+        .btn-icon {
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            position: relative;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: 1px solid #eee;
         }
-        .visual-content h2 { 
-            font-family: 'Noto Serif KR', serif; 
-            font-size: 42px; 
-            margin-bottom: 15px; 
-            color: #443c33;
-        }
-        .visual-content p { font-size: 18px; color: #777; }
+        .btn-edit { color: #3498db; }
+        .btn-del { color: #e74c3c; font-weight: bold; }
+        .btn-icon:hover { transform: scale(1.15); background: #fff; }
 
-        /* 섹션 공통 */
-        section { padding: 80px 5%; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title h2 { 
-            font-family: 'Noto Serif KR', serif; 
-            font-size: 32px; 
-            position: relative;
-            padding-bottom: 15px;
-        }
-        .section-title h2::after {
-            content: '';
-            width: 40px;
-            height: 2px;
-            background: #d9534f;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        .card-info { padding: 20px; text-align: center; cursor: pointer; }
+        .card-info h3 { font-size: 20px; margin-bottom: 8px; }
+        .card-info .price { color: var(--primary-color); font-weight: 700; font-size: 18px; }
 
-        /* 상품 리스트 그리드 */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .product-item {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-        .product-item:hover { transform: translateY(-10px); }
-        .product-item img { width: 100%; height: 200px; object-fit: cover; }
-        .product-info { padding: 20px; text-align: center; }
-        .product-info h3 { font-size: 19px; margin-bottom: 10px; }
-        .product-info .price { color: #d9534f; font-weight: bold; font-size: 18px; }
-
-        /* 모달 스타일 */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -146,192 +154,267 @@
             max-width: 800px;
             border-radius: 20px;
             display: flex;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
-        .modal-slider { width: 50%; background: #eee; }
-        .modal-slider img { width: 100%; height: 100%; object-fit: cover; }
-        .modal-desc { width: 50%; padding: 40px; }
-        .close-modal {
-            position: absolute;
-            top: 20px; right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-        }
+        .modal-left { width: 50%; background: #f0f0f0; }
+        .modal-left img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-right { width: 50%; padding: 40px; }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 30px; color: #999; line-height: 1; cursor: pointer; }
 
-        /* 푸터 */
-        footer {
-            background: #333;
-            color: #999;
-            padding: 50px 5%;
-            text-align: center;
-            font-size: 14px;
+        /* Form Layout */
+        .form-modal { max-width: 450px !important; flex-direction: column !important; padding: 30px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
         }
-        footer b { color: #fff; }
+        .btn-save { background: var(--admin-bg); color: #fff; padding: 12px; border-radius: 6px; width: 100%; font-size: 16px; font-weight: 600; margin-top: 10px; }
 
-        @media (max-width: 768px) {
-            #gnb { display: none; }
-            .modal-content { flex-direction: column; height: 90%; overflow-y: auto; }
-            .modal-slider, .modal-desc { width: 100%; }
-        }
+        footer { background: #1a1a1a; color: #777; padding: 40px 5%; text-align: center; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div class="admin-bar">
-        <div>현재 접속: <strong>관리자(Admin)</strong></div>
-        <div>
-            최근 로그인: 2024-05-20
-            <a href="#" class="logout-btn">로그아웃</a>
+    <!-- Admin Top Bar -->
+    <div class="admin-nav">
+        <div><strong>관리자 시스템</strong></div>
+        <div class="admin-controls">
+            <button class="btn-admin" id="openAddModal">+ 메뉴 추가</button>
         </div>
     </div>
 
     <header>
-        <div class="logo">
-            <a href="#">[Image of 로고]</a>
-        </div>
+        <div class="logo">불쌍한 순두부</div>
         <nav id="gnb">
             <ul>
-                <li><a href="#">스토리</a>
-                    <ul>
-                        <li><a href="#">소개</a></li>
-                        <li><a href="#">아이덴티티</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">메뉴</a>
-                    <ul>
-                        <li><a href="#">순두부</a></li>
-                        <li><a href="#">두부요리</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">매장찾기</a></li>
-                <li><a href="#">새소식</a></li>
+                <li><a href="#">브랜드</a></li>
+                <li><a href="#">메뉴소개</a></li>
+                <li><a href="#">가맹안내</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <div class="main-visual">
-            <div class="visual-content">
-                <h2>건강을 담은 부드러움,<br>불쌍한 순두부</h2>
-                <p>우리 콩 100%로 만든 정직한 맛을 경험해보세요.</p>
-            </div>
+    <section class="hero">
+        <h1>맛있고 건강한 한 끼</h1>
+        <p>엄선된 콩으로 직접 만드는 수제 순두부 전문점</p>
+    </section>
+
+    <section class="section">
+        <div class="section-title">
+            <h2>메뉴 카테고리</h2>
         </div>
 
-        <section id="menu-section">
-            <div class="section-title">
-                <h2>시그니처 메뉴</h2>
-                <p>불쌍한 순두부가 자랑하는 대표 메뉴들입니다.</p>
-            </div>
+        <div class="filter-wrap">
+            <button class="filter-btn active" data-filter="all">전체보기</button>
+            <button class="filter-btn" data-filter="meal">식사류</button>
+            <button class="filter-btn" data-filter="dish">요리류</button>
+        </div>
 
-            <div class="product-grid" id="productList">
-                <!-- JS에서 상품 로드 -->
-            </div>
-        </section>
+        <div class="grid" id="menuGrid">
+            <!-- Menus will be rendered here -->
+        </div>
+    </section>
 
-        <section style="background: #fbfbfb;">
-            <div class="section-title">
-                <h2>공지사항</h2>
-            </div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <ul style="border-top: 2px solid #333;">
-                    <li style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                        <span>[안내] 하절기 영업 시간 변경 안내</span>
-                        <span>2024.05.15</span>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
-                        <span>[이벤트] 신메뉴 출시 기념 10% 할인</span>
-                        <span>2024.05.10</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <!-- 제품 상세 모달 -->
-    <div id="productModal" class="modal">
+    <!-- Detail View Modal -->
+    <div id="viewModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <div class="modal-slider" id="modalSlider">
-                <!-- 이미지 삽입 -->
-            </div>
-            <div class="modal-desc" id="modalDesc">
-                <!-- 정보 삽입 -->
-            </div>
+            <div class="modal-left" id="viewImage"></div>
+            <div class="modal-right" id="viewInfo"></div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Form Modal -->
+    <div id="formModal" class="modal">
+        <div class="modal-content form-modal">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle" style="margin-bottom:20px;">메뉴 설정</h2>
+            <form id="menuForm">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label>카테고리</label>
+                    <select id="mCate">
+                        <option value="meal">식사류</option>
+                        <option value="dish">요리류</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>메뉴명</label>
+                    <input type="text" id="mName" required>
+                </div>
+                <div class="form-group">
+                    <label>가격 (원)</label>
+                    <input type="number" id="mPrice" required>
+                </div>
+                <div class="form-group">
+                    <label>설명</label>
+                    <textarea id="mDesc" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>이미지 URL</label>
+                    <input type="text" id="mImg" value="https://picsum.photos/400/300">
+                </div>
+                <button type="submit" class="btn-save">저장하기</button>
+            </form>
         </div>
     </div>
 
     <footer>
-        <p><b>불쌍한 순두부</b> | 대표: 홍길동 | 주소: 대구광역시 중구 중앙대로</p>
-        <p>Copyright © 2024 SUNDUBU. All Rights Reserved.</p>
+        <p>&copy; 2024 불쌍한 순두부. All rights reserved.</p>
     </footer>
 
     <script>
-        $(document).ready(function() {
-            // 상품 데이터
-            const products = [
-                { 
-                    id: 1, 
-                    name: '전통 순두부찌개', 
-                    price: '9,000', 
-                    img: 'https://picsum.photos/400/300?random=1',
-                    desc: '매일 아침 직접 만드는 신선한 순두부와 비법 양념장으로 깊은 맛을 낸 정통 찌개입니다.'
-                },
-                { 
-                    id: 2, 
-                    name: '들깨 버섯 순두부', 
-                    price: '10,500', 
-                    img: 'https://picsum.photos/400/300?random=2',
-                    desc: '고소한 들깨가루와 신선한 느타리, 팽이버섯이 어우러져 담백하고 영양 가득한 별미입니다.'
-                },
-                { 
-                    id: 3, 
-                    name: '해물 가득 순두부', 
-                    price: '11,000', 
-                    img: 'https://picsum.photos/400/300?random=3',
-                    desc: '새우, 조개, 꽃게 등 풍부한 해산물을 넣어 바다의 시원함을 그대로 담았습니다.'
-                }
-            ];
+        // Initial Data
+        const initialMenu = [
+            { id: 1, cate: 'meal', name: '해물 순두부', price: 9000, desc: '신선한 해물이 가득 들어간 얼큰한 순두부찌개', img: 'https://picsum.photos/400/300?sig=1' },
+            { id: 2, cate: 'meal', name: '들깨 순두부', price: 10000, desc: '고소한 들깨 가루로 맛을 낸 영양 만점 순두부', img: 'https://picsum.photos/400/300?sig=2' },
+            { id: 3, cate: 'dish', name: '모두부 김치', price: 15000, desc: '갓 만든 따끈한 두부와 볶음김치의 환상적인 조화', img: 'https://picsum.photos/400/300?sig=3' }
+        ];
 
-            // 리스트 출력
-            function loadProducts() {
-                const list = $('#productList');
-                products.forEach(p => {
-                    list.append(`
-                        <div class="product-item" data-id="${p.id}">
-                            <img src="${p.img}" alt="${p.name}">
-                            <div class="product-info">
-                                <h3>${p.name}</h3>
-                                <p class="price">${p.price}원</p>
-                            </div>
-                        </div>
-                    `);
-                });
+        // Load data from Storage or Use Initial
+        let menuData = JSON.parse(localStorage.getItem('sundubu_db')) || initialMenu;
+
+        // Render Function
+        function render(filter = 'all') {
+            const grid = $('#menuGrid');
+            grid.empty();
+
+            const items = filter === 'all' ? menuData : menuData.filter(v => v.cate === filter);
+
+            if (items.length === 0) {
+                grid.html('<p style="text-align:center; grid-column:1/-1; padding:50px; color:#999;">등록된 메뉴가 없습니다.</p>');
+                return;
             }
 
-            // 모달 열기
-            $(document).on('click', '.product-item', function() {
-                const id = $(this).data('id');
-                const p = products.find(item => item.id === id);
-                
-                $('#modalSlider').html(`<img src="${p.img}" alt="${p.name}">`);
-                $('#modalDesc').html(`
-                    <h2 style="font-family:'Noto Serif KR'; margin-bottom:15px;">${p.name}</h2>
-                    <p style="color:#d9534f; font-weight:bold; font-size:22px; margin-bottom:20px;">${p.price}원</p>
-                    <p style="line-height:1.8; color:#666;">${p.desc}</p>
-                    <button style="margin-top:30px; background:#333; color:#fff; border:none; padding:12px 25px; cursor:pointer; border-radius:5px;">주문하기</button>
+            items.forEach(item => {
+                grid.append(`
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="${item.img}" alt="${item.name}">
+                            <div class="card-admin-btns">
+                                <button class="btn-icon btn-edit" title="수정" onclick="editItem(${item.id}, event)">📝</button>
+                                <button class="btn-icon btn-del" title="삭제" onclick="deleteItem(${item.id}, event)">❌</button>
+                            </div>
+                        </div>
+                        <div class="card-info" onclick="viewDetail(${item.id})">
+                            <h3>${item.name}</h3>
+                            <p class="price">${Number(item.price).toLocaleString()}원</p>
+                        </div>
+                    </div>
                 `);
+            });
+        }
+
+        // Save to LocalStorage
+        function saveData() {
+            localStorage.setItem('sundubu_db', JSON.stringify(menuData));
+        }
+
+        // --- CRITICAL: FIXED DELETE FUNCTION ---
+        window.deleteItem = function(id, event) {
+            // Prevent the card click (detail view) from firing
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            if (confirm('이 메뉴를 정말 삭제하시겠습니까?')) {
+                // Filter out the item with the matching id
+                menuData = menuData.filter(item => item.id !== id);
                 
-                $('#productModal').css('display', 'flex').hide().fadeIn(300);
-            });
+                // Save and refresh
+                saveData();
+                render($('.filter-btn.active').data('filter'));
+            }
+        };
 
-            // 모달 닫기
-            $('.close-modal, .modal').on('click', function(e) {
-                if(e.target === this) $('#productModal').fadeOut(200);
-            });
+        // Edit Function
+        window.editItem = function(id, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
 
-            loadProducts();
+            const item = menuData.find(v => v.id === id);
+            if (!item) return;
+
+            $('#modalTitle').text('메뉴 수정');
+            $('#editId').val(item.id);
+            $('#mCate').val(item.cate);
+            $('#mName').val(item.name);
+            $('#mPrice').val(item.price);
+            $('#mDesc').val(item.desc);
+            $('#mImg').val(item.img);
+            
+            $('#formModal').fadeIn().css('display', 'flex');
+        };
+
+        // View Detail
+        window.viewDetail = function(id) {
+            const item = menuData.find(v => v.id === id);
+            if (!item) return;
+
+            $('#viewImage').html(`<img src="${item.img}">`);
+            $('#viewInfo').html(`
+                <h2 style="font-size:28px; margin-bottom:10px;">${item.name}</h2>
+                <p style="color:#d9534f; font-size:22px; font-weight:700; margin-bottom:15px;">${Number(item.price).toLocaleString()}원</p>
+                <p style="color:#666; line-height:1.6;">${item.desc || '설명이 등록되지 않았습니다.'}</p>
+            `);
+            $('#viewModal').fadeIn().css('display', 'flex');
+        };
+
+        // Form Submit
+        $('#menuForm').submit(function(e) {
+            e.preventDefault();
+            const id = $('#editId').val();
+            
+            const newItem = {
+                id: id ? parseInt(id) : Date.now(),
+                cate: $('#mCate').val(),
+                name: $('#mName').val(),
+                price: parseInt($('#mPrice').val()),
+                desc: $('#mDesc').val(),
+                img: $('#mImg').val() || `https://picsum.photos/400/300?sig=${Date.now()}`
+            };
+
+            if (id) {
+                const idx = menuData.findIndex(v => v.id === parseInt(id));
+                menuData[idx] = newItem;
+            } else {
+                menuData.push(newItem);
+            }
+
+            saveData();
+            render();
+            $('.modal').fadeOut();
+        });
+
+        // UI Event Handlers
+        $('#openAddModal').click(function() {
+            $('#menuForm')[0].reset();
+            $('#editId').val('');
+            $('#modalTitle').text('신규 메뉴 등록');
+            $('#formModal').fadeIn().css('display', 'flex');
+        });
+
+        $('.close-modal').click(function() {
+            $('.modal').fadeOut();
+        });
+
+        $('.filter-btn').click(function() {
+            $('.filter-btn').removeClass('active');
+            $(this).addClass('active');
+            render($(this).data('filter'));
+        });
+
+        $(window).click(function(e) {
+            if ($(e.target).hasClass('modal')) $('.modal').fadeOut();
+        });
+
+        // Initialize
+        $(document).ready(function() {
+            render();
         });
     </script>
 </body>

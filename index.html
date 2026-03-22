@@ -2,17 +2,14 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sim playlist</title>
+    <title>Playlist Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         html {
             background: url('https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/153/107/81153107_1548380615317_1_600x600.JPG/dims/resize/Q_80,0') no-repeat center center fixed;
@@ -21,298 +18,115 @@
 
         body {
             min-height: 100vh;
-            padding: 20px;
-            font-size: 14px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            color: #222222;
             font-family: "Nunito", sans-serif;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
+            margin: 0;
         }
 
-        /* 공통 폰 디자인 */
         .phone {
-            width: 380px; /* 기존 700px에서 폰 규격에 맞게 조정 */
+            width: 380px;
             background-color: white;
-            height: 750px;
+            height: 700px;
             border-radius: 30px;
-            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            padding: 35px 25px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 화면 표시 제어 */
-        #playlist-section { display: none; } /* 초기엔 숨김 */
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .artist {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .artist img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .artist h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-        .artist h6 { font-weight: 600; opacity: 0.6; }
-
-        .btns { display: flex; justify-content: center; gap: 10px; }
-        .btns__btn {
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btns__btn:first-child { background-color: #222222; color: white; }
-        .btns__btn:last-child { background-color: #f0f0f0; }
-
-        .songs {
-            margin-top: 30px;
-            overflow-y: auto;
-            flex: 1;
-            padding-bottom: 80px;
-        }
-
-        .songs__song {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .songs__data { display: flex; align-items: center; }
-        .songs__song img { width: 45px; height: 45px; margin-right: 12px; border-radius: 8px; }
-        .songs__author { display: block; font-weight: 600; opacity: 0.5; margin-bottom: 4px; font-size: 11px; }
-        .songs__title { font-size: 14px; font-weight: 700; }
-
-        .currently-playing {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #222222;
-            width: 90%;
-            padding: 15px 25px;
-            border-radius: 50px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* 로그인 섹션 스타일 */
-        .login-container {
-            text-align: center;
-            height: 100%;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2);
+            padding: 40px 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            text-align: center;
         }
 
-        .innerbox1 h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
-        .innerbox1 span { opacity: 0.6; line-height: 1.5; }
-        
-        .p4 { 
-            background: #f8f8f8; 
-            padding: 15px; 
-            border-radius: 10px; 
-            margin: 20px 0; 
-            font-size: 12px; 
+        .innerbox1 h1 { font-size: 32px; font-weight: 700; margin-bottom: 15px; }
+        .innerbox1 p { opacity: 0.6; line-height: 1.5; margin-bottom: 30px; }
+
+        .login-info {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
             text-align: left;
+            margin-bottom: 25px;
             line-height: 1.6;
         }
 
-        .innerbox2 input {
+        input {
             width: 100%;
             height: 50px;
             padding: 0 15px;
-            margin: 8px 0;
+            margin-bottom: 12px;
             border: 1px solid #ddd;
             border-radius: 10px;
-            font-family: inherit;
+            font-size: 15px;
         }
 
         .button1 {
             width: 100%;
-            height: 50px;
+            height: 55px;
             background-color: #222222;
             color: white;
             border: none;
             border-radius: 10px;
             font-size: 18px;
-            font-weight: 600;
-            margin-top: 20px;
+            font-weight: 700;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        .button1:hover { opacity: 0.9; }
+        .button1:hover { background-color: #444; }
 
-        /* 메시지 알림 */
-        #alert-box {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            display: none;
-            z-index: 100;
+        #msg-box {
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            min-height: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div id="alert-box"></div>
-
-    <!-- 로그인 화면 -->
-    <section class="phone" id="login-section">
-        <div class="login-container">
-            <div class="innerbox1">
-                <h1>Sign In</h1>
-                <span>Welcome to our playlist.<br>Please login to continue.</span>
-                <div class="p4">
-                    <strong>Test Accounts:</strong><br>
-                    User: testuser@test.com / 1234<br>
-                    Admin: testadmin@test.com / 1234
-                </div>
-            </div>
-            <div class="innerbox2">
-                <input type="text" id="userid" placeholder="Email address">
-                <input type="password" id="userpwd" placeholder="Password">
-                <button type="button" class="button1" onclick="tryLogin()">Sign In</button>
-                <div style="margin-top: 25px;">
-                    <a href="#" style="text-decoration: none; color: #888; font-size: 13px;">Sign Up</a>
-                </div>
-                <p style="margin-top: 40px; font-size: 10px; opacity: 0.4;">
-                    Hwangbo Changgyu & Sim Gyusung
-                </p>
+    <div class="phone">
+        <div class="innerbox1">
+            <h1>Sign In</h1>
+            <p>Admin 계정으로 로그인 시<br>hi.html 페이지로 이동합니다.</p>
+            
+            <div class="login-info">
+                <strong>Admin 계정:</strong> testadmin@test.com / 1234<br>
+                <strong>일반 계정:</strong> testuser@test.com / 1234
             </div>
         </div>
-    </section>
 
-    <!-- 플레이리스트 화면 -->
-    <section class="phone" id="playlist-section">
-        <header>
-            <i class="fas fa-arrow-left" onclick="logout()" style="cursor:pointer;"></i>
-            <i class="fas fa-search"></i>
-        </header>
-        <div class="artist">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200" />
-            <h2>불쌍한 순두부</h2>
-            <h6>불쌍하지만 맛은 부드러워</h6>
+        <div class="innerbox2">
+            <input type="text" id="userid" placeholder="Email address" value="testadmin@test.com">
+            <input type="password" id="userpwd" placeholder="Password" value="1234">
+            <button type="button" class="button1" onclick="handleLogin()">Sign In</button>
+            <div id="msg-box"></div>
         </div>
-        
-        <div class="btns">
-            <span class="btns__btn">관리자</span>
-            <span class="btns__btn"><i class="fas fa-heart"></i> 1 가맹점</span>
-        </div>
-
-        <ul class="songs">
-            <li class="songs__song">
-                <div class="songs__data">
-                    <img src="https://picsum.photos/id/10/50/50" />
-                    <div>
-                        <span class="songs__author">창업안내</span>
-                        <span class="songs__title">인테리어 및 절차안내</span>
-                    </div>
-                </div>
-                <i class="fas fa-ellipsis-v"></i>
-            </li>
-            <li class="songs__song">
-                <div class="songs__data">
-                    <img src="https://picsum.photos/id/20/50/50" />
-                    <div>
-                        <span class="songs__author">1:1 창업문의</span>
-                        <span class="songs__title">창업 상담 신청</span>
-                    </div>
-                </div>
-                <i class="fas fa-ellipsis-v"></i>
-            </li>
-            <li class="songs__song">
-                <div class="songs__data">
-                    <img src="https://picsum.photos/id/30/50/50" />
-                    <div>
-                        <span class="songs__author">전화문의</span>
-                        <span class="songs__title">지역담당자 연결</span>
-                    </div>
-                </div>
-                <i class="fas fa-ellipsis-v"></i>
-            </li>
-            <li class="songs__song">
-                <div class="songs__data">
-                    <img src="https://picsum.photos/id/40/50/50" />
-                    <div>
-                        <span class="songs__author">Avril Lavigne</span>
-                        <span class="songs__title">Sk8er Boi</span>
-                    </div>
-                </div>
-                <i class="fas fa-ellipsis-v"></i>
-            </li>
-        </ul>
-
-        <div class="currently-playing">
-            <div>
-                <span class="current__author">Lauv, Troye Sivan</span>
-                <span class="current__song">i'm so tired...</span>
-            </div>
-            <div class="currnt__player">
-                <i class="fas fa-step-backward"></i>
-                <i class="fas fa-pause"></i>
-                <i class="fas fa-step-forward"></i>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        function showAlert(text) {
-            const box = document.getElementById('alert-box');
-            box.innerText = text;
-            box.style.display = 'block';
-            setTimeout(() => { box.style.display = 'none'; }, 2000);
-        }
-
-        function tryLogin() {
+        function handleLogin() {
             const id = document.getElementById('userid').value;
             const pw = document.getElementById('userpwd').value;
+            const msgBox = document.getElementById('msg-box');
 
-            // 간단한 로그인 유효성 검사
-            if ((id === "testuser@test.com" || id === "testadmin@test.com") && pw === "1234") {
-                showAlert("로그인에 성공했습니다!");
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('playlist-section').style.display = 'flex';
+            if (id === "testadmin@test.com" && pw === "1234") {
+                msgBox.style.color = "blue";
+                msgBox.innerText = "관리자 로그인 성공! 이동 중...";
+                // 관리자 로그인 성공 시 hi.html로 이동
+                setTimeout(() => {
+                    window.location.href = "hi.html";
+                }, 1000);
+            } else if (id === "testuser@test.com" && pw === "1234") {
+                msgBox.style.color = "green";
+                msgBox.innerText = "일반 사용자 로그인 성공!";
             } else {
-                showAlert("로그인 정보가 일치하지 않습니다.");
+                msgBox.style.color = "red";
+                msgBox.innerText = "아이디 또는 비밀번호가 틀렸습니다.";
             }
-        }
-
-        function logout() {
-            document.getElementById('login-section').style.display = 'flex';
-            document.getElementById('playlist-section').style.display = 'none';
-            document.getElementById('userid').value = "";
-            document.getElementById('userpwd').value = "";
         }
     </script>
 </body>

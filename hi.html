@@ -1,583 +1,338 @@
 <!DOCTYPE html>
-<html lang="en" lang="ko">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Noto+Serif+KR:wght@200;400;500&display=swap"
-        rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>불쌍한 순두부 - 관리자 모드</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        /* 기본 리셋 및 폰트 설정 */
+        * { margin: 0; padding: 0; box-box: border-box; }
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
 
-    <title>불쌍한 순두부</title>
-    <link rel="stylesheet" href="css/hi.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/title.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/footer.css">
+        /* 관리자 상단 바 */
+        .admin-bar {
+            background: #222;
+            color: #fff;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+        .admin-bar strong { color: #ffeb3b; }
+        .logout-btn { background: #444; padding: 3px 10px; border-radius: 3px; margin-left: 10px; }
 
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/index.js"></script>
+        /* 헤더 디자인 */
+        header {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo img { height: 50px; }
+        
+        #gnb { display: flex; }
+        #gnb > ul { display: flex; gap: 30px; }
+        #gnb > ul > li { position: relative; font-weight: 500; font-size: 17px; }
+        #gnb > ul > li:hover > a { color: #d9534f; }
+        
+        /* 서브메뉴 (Hover) */
+        #gnb ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 150px;
+            padding: 10px 0;
+        }
+        #gnb li:hover ul { display: block; }
+        #gnb ul ul li { padding: 8px 20px; font-size: 14px; }
+        #gnb ul ul li:hover { background: #f9f9f9; }
+
+        /* 메인 비주얼 슬라이드 영역 */
+        .main-visual {
+            height: 450px;
+            background: #f4f1ea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .visual-content h2 { 
+            font-family: 'Noto Serif KR', serif; 
+            font-size: 42px; 
+            margin-bottom: 15px; 
+            color: #443c33;
+        }
+        .visual-content p { font-size: 18px; color: #777; }
+
+        /* 섹션 공통 */
+        section { padding: 80px 5%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 { 
+            font-family: 'Noto Serif KR', serif; 
+            font-size: 32px; 
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title h2::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: #d9534f;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 상품 리스트 그리드 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .product-item:hover { transform: translateY(-10px); }
+        .product-item img { width: 100%; height: 200px; object-fit: cover; }
+        .product-info { padding: 20px; text-align: center; }
+        .product-info h3 { font-size: 19px; margin-bottom: 10px; }
+        .product-info .price { color: #d9534f; font-weight: bold; font-size: 18px; }
+
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .modal-slider { width: 50%; background: #eee; }
+        .modal-slider img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-desc { width: 50%; padding: 40px; }
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* 푸터 */
+        footer {
+            background: #333;
+            color: #999;
+            padding: 50px 5%;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer b { color: #fff; }
+
+        @media (max-width: 768px) {
+            #gnb { display: none; }
+            .modal-content { flex-direction: column; height: 90%; overflow-y: auto; }
+            .modal-slider, .modal-desc { width: 100%; }
+        }
+    </style>
 </head>
-
 <body>
+
+    <div class="admin-bar">
+        <div>현재 접속: <strong>관리자(Admin)</strong></div>
+        <div>
+            최근 로그인: 2024-05-20
+            <a href="#" class="logout-btn">로그아웃</a>
+        </div>
+    </div>
+
     <header>
-        <div class="inner">
-            <h1 class="logo">
-                <a href="index.html"><img src="img/logo.jpg" alt="메인으로"></a>
-            </h1>
+        <div class="logo">
+            <a href="#">[Image of 로고]</a>
+        </div>
+        <nav id="gnb">
+            <ul>
+                <li><a href="#">스토리</a>
+                    <ul>
+                        <li><a href="#">소개</a></li>
+                        <li><a href="#">아이덴티티</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">메뉴</a>
+                    <ul>
+                        <li><a href="#">순두부</a></li>
+                        <li><a href="#">두부요리</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">매장찾기</a></li>
+                <li><a href="#">새소식</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <nav id="gnb">
-                <ul>
-                    <li>
-                        <a href="sub/about.html">스토리</a>
-                        <ul>
-                            <li><a href="sub/about.html">소개</a></li>
-                            <li><a href="sub/identity.html">아이덴티티</a></li>
-                            <li><a href="sub/tea-story.html">두부 이야기</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="sub/blending.html">메뉴</a>
-                        <ul>
-                            <li><a href="sub/blending.html">순두부</a></li>
-                            <li><a href="sub/drink.html">두부</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="sub/product.html">상품삭제</a>
-                        <ul>
-                            <li><a href="sub/product.html">상품</a></li>
-                        </ul>
-                    </li>
-                    <li>
+    <main>
+        <div class="main-visual">
+            <div class="visual-content">
+                <h2>건강을 담은 부드러움,<br>불쌍한 순두부</h2>
+                <p>우리 콩 100%로 만든 정직한 맛을 경험해보세요.</p>
+            </div>
+        </div>
 
+        <section id="menu-section">
+            <div class="section-title">
+                <h2>시그니처 메뉴</h2>
+                <p>불쌍한 순두부가 자랑하는 대표 메뉴들입니다.</p>
+            </div>
+
+            <div class="product-grid" id="productList">
+                <!-- JS에서 상품 로드 -->
+            </div>
+        </section>
+
+        <section style="background: #fbfbfb;">
+            <div class="section-title">
+                <h2>공지사항</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <ul style="border-top: 2px solid #333;">
+                    <li style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
+                        <span>[안내] 하절기 영업 시간 변경 안내</span>
+                        <span>2024.05.15</span>
                     </li>
-                    <li>
-                        <a href="sub/notice.html">소식</a>
-                        <ul>
-                            <li><a href="sub/notice.html">공지사항</a></li>
-                            <li><a href="sub/event.html">이벤트</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="sub/compete.html">COMPANY</a>
-                        <ul>
-                            <li><a href="sub/compete.html">의 경쟁력</a></li>
-                            <li><a href="sub/guide.html">제휴문의</a></li>
-                            <li><a href="sub/consult.html">고객의 소리</a></li>
-                        </ul>
+                    <li style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
+                        <span>[이벤트] 신메뉴 출시 기념 10% 할인</span>
+                        <span>2024.05.10</span>
                     </li>
                 </ul>
-            </nav>
-
-            <ul class="lnb">
-                <li>
-                    <a href="sub/store.html"><img src="./img/icons8-수색-30.png" alt="매장찾기">매장찾기</a>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <main class="main">
-        <div class="container">
-            <div class="visual-box" id="visual0">
-                <a href="https://www.instagram.com/p/CTlQ-64JnSc/?utm_source=ig_web_copy_link">[신메뉴 출시]가을, 사과가 더 맛있어지는
-                    계절 - 양구사과밀크티(hot/iced)</a>
             </div>
-
-            <div class="visual-box" id="visual1">
-                <a href="#">[인기메뉴 재출시] 단호박&amp;흑임자 고소한 가을의 맛 - 단호박라떼/흑임자라떼</a>
-            </div>
-
-            <div class="visual-box" id="visual2">
-                <a href="http://ogadamall.cafe24.com/index.html">[신년 맞이 선물 추천] 오가다몰에서 설 선물을 준비하세요 - 자연담은 차 선물세트</a>
-            </div>
-        </div>
-
-        <div class="visual-wrap">
-            <a href="#" id="visual1" data-i="0">
-                <div class="visual-box">
-                    <h2 class="vi-tit">가을, 사과가 더<br>맛있어지는 계절</h2>
-                    <div class="vi-menu">
-                        <div class="menu-img">
-                            <img src="" alt="사과가 가득들은 양구사과 밀크티">
-                        </div>
-
-                        <div class="txt-box">
-                            <p class="tag">hot/iced</p>
-                            <p class="menu-name">
-                                <span>양구 사과 밀크티</span>
-                                yanggu<br>apple milktea
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" id="visual2" data-i="1">
-                <div class="visual-box">
-                    <div class="vi-tit-box">
-                        <p class="tag">인기메뉴 재출시</p>
-                        <h2 class="vi-tit">
-                            <span>단호박 &amp; 흑임자</span>
-                            고소한 가을의 맛
-                        </h2>
-                    </div>
-
-                    <div class="pumpkin">
-                        <p class="menu-name">
-                            <span>단호박 라떼</span>
-                            sweet pumpkin latte
-                        </p>
-
-                        <div class="menu-img">
-                            <img src="/img/icons8-수색-30.png" alt="단호박으로 만든 라떼메뉴">
-                        </div>
-                    </div>
-
-                    <div class="vi-deco">
-                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                            alt="단호박">
-                    </div>
-
-                    <div class="sesame">
-                        <p class="menu-name">
-                            <span>흑임자 라떼</span>
-                            black sesame latte
-                        </p>
-
-                        <div class="menu-img">
-                            <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                                alt="흑임자로 만든 라떼메뉴">
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" id="visual3" data-i="2">
-                <div class="visual-box">
-                    <div class="tit-box">
-                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                            alt="오가다 설선물">
-                    </div>
-                    <div class="prod-img">
-                        <img src="https://cdn-lostark.game.onstove.com/uploadfiles/banner/6099374935a24ce9a2240d13102d948f.jpg"
-                            alt="오가다의 한라봉 제품들">
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div id="pager">
-            <ul>
-                <li class="active"><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
-        </div>
+        </section>
     </main>
 
-
-    <!--                                섹션                                    -->
-
-
-
-
-
-    <section>
-
-        <article class="tea">
-            <div class="inner">
-
-                <h2 class="title">불쌍한 순두부 시그니처</h2>
-                <div class="tea-intro">
-                    <div class="intro-left"><img src="img/tea_title_img.jpg" alt="불쌍한 순두부를 소개합니다"></div>
-
-                    <div class="intro-right">
-                        <h3>
-                            <span class="eng">soft tofu</span>
-                            순두부
-                        </h3>
-                        <p class="des">우리 콩으로 얻어진 순두부로<br>건강 효능을 조합한 특별한 순두부</p>
-                        <!--//.tab-menu-->
-                    </div>
-                    <!--//.intro-text-->
-                </div>
-                <!--//.tea-intro-->
-                <!--한방-->
-                <div class="product-list" id="productList">
-                    <!-- 제품 목록은 JavaScript에서 동적으로 추가될 예정입니다. -->
-                </div>
-
-                <div id="productModal" class="modal">
-                    <span class="close">&times;</span>
-                    <div class="modal-content">
-                        <div id="imageSlider" class="slider">
-                            <!-- 이미지 슬라이더에 대한 내용은 JavaScript에서 동적으로 추가될 예정입니다. -->
-                        </div>
-                        <div id="productDetails" class="details">
-                            <!-- 제품 상세 정보는 JavaScript에서 동적으로 추가될 예정입니다. -->
-                        </div>
-                    </div>
-                </div>
-                <!--//한방-->
-
-
-                <!--과일-->
-
-                <!--//과일-->
-
-
-                <!--//허브-->
-
-
+    <!-- 제품 상세 모달 -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-slider" id="modalSlider">
+                <!-- 이미지 삽입 -->
             </div>
-        </article>
-
-        <article class="about">
-            <div class="tit-box">
-                <h2 class="title">
-                    <span>healthy tea brand</span>
-                    오가다 五嘉茶
-                </h2>
-                <p class="mean">다섯가지 아름다운 우리차</p>
+            <div class="modal-desc" id="modalDesc">
+                <!-- 정보 삽입 -->
             </div>
-
-            <div class="about-video">
-                <div id="play"><span></span></div>
-                <video poster="img/video_thumb.png" controls muted>
-                    <source src="media/OgadaBrandFilm%20ver1.mp4" type="video/mp4">
-                    <strong>Your browser does not support the video tag.</strong>
-                </video>
-            </div>
-
-            <div class="des-box">
-                <p class="des-tit">우리차로 건강한 에너지를 나누다</p>
-                <p class="des-txt">우리는 전국 방방 곳곳의 한국적인 재료들을 찾아다닙니다<br>한국의 재료로 아름다운 우리 차를 여러분께 전합니다</p>
-            </div>
-        </article>
-        //스타일삭제
-        <article class="best-prod">
-            <div class="inner clear">
-                <h2 class="title">오가다 베스트</h2>
-                <a href="http://ogadamall.cafe24.com/index.html" class="btn-mall" target="_blank">온라인몰 바로가기</a>
-
-                <div class="prod-wrap">
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/best-%EC%98%A4%EA%B0%80%EB%8B%A4-%EB%A7%90%EC%B0%A8-30%ED%8F%AC540g-i-%EC%BD%94%EC%8A%A4%ED%8A%B8%EC%BD%94-%ED%8C%90%EB%A7%A4%EC%A0%9C%ED%92%88-i-%EB%A7%90%EC%B0%A8%EB%9D%BC%EB%96%BC/31/category/47/display/1/"
-                            target="_blank"><img src="img/prod_01-h.jpg" alt=""><img src="img/prod_01.jpg"
-                                alt="오가다 말차"></a>
-                        <p>#코스트코_판매 #홈카페 #보성말차</p>
-                        <h3>오가다 말차 30포 (540g)</h3>
-                    </div>
-
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/daily-%EA%B1%B4%EA%B0%95%EC%B0%A8%EC%98%A4%EA%B0%80%EB%8B%A4-%ED%98%B8%EB%B0%95%ED%8C%A5%EC%B0%A8-1%ED%8C%A9-2g-20%EA%B0%9C/43/category/49/display/1/"
-                            target="_blank"><img src="img/prod_02-h.jpg" alt=""><img src="img/prod_02.jpg"
-                                alt="오가다 호박팥차"></a>
-                        <p>#건강차 #붓기제거 #티백</p>
-                        <h3>오가다 호박팥차 1팩<br> (2g X 20개)</h3>
-                    </div>
-
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/%EA%B1%B4%EA%B0%95%EC%A6%99%EC%98%A4%EA%B0%80%EB%8B%A4-%EC%9C%A0%EA%B8%B0%EB%86%8D-%EC%96%91%EB%B0%B0%EC%B6%94%EC%A6%99-100-1%EB%B0%95%EC%8A%A4-100ml-30%EA%B0%9C%EC%9E%85/68/category/44/display/1/"
-                            target="_blank"><img src="img/prod_03-h.jpg" alt=""><img src="img/prod_03.jpg"
-                                alt="유기농 양배추즙"></a>
-                        <p>#첨가물_제로 #유기농 #비리지않은</p>
-                        <h3>유기농 양배추즙 100%<br>(100ml 30개입)</h3>
-                    </div>
-
-                    <div class="prod-box">
-                        <a href="http://ogadamall.cafe24.com/product/%EC%9D%B4%EB%84%88%EC%A0%A4%EB%A6%AC-%EB%B9%84%ED%83%80%EB%A0%88%EB%AA%AC-%EC%A0%A4%EB%A6%AC%EC%8A%A4%ED%8B%B1-20g-x-15%ED%8F%AC/22/category/45/display/1/"
-                            target="_blank"><img src="img/prod_04-h.jpg" alt=""><img src="img/prod_04.jpg"
-                                alt="이너젤리 비타레몬"></a>
-                        <p>#비타민C #하루한포 #젤리스틱</p>
-                        <h3>이너젤리 비타레몬 젤리스틱<br>(20g X 15포)</h3>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="banner">
-            <div class="inner clear">
-                <div class="text-box">
-                    <p>오가다의 베스트 상품을 가장 저렴하게 즐기는 방법</p>
-                    <h2>혜택받고, 원하는 날에 받으세요!</h2>
-                </div>
-
-                <a href="https://smartstore.naver.com/ogada/category/d0f0548155f6472a9efd33d6242ff93f?cp=1"
-                    class="btn-apply" target="_blank">정기배송 신청하기</a>
-            </div>
-        </article>
-        //스타일 삭제
-        <article class="content">
-            <div class="inner">
-                <h2 class="title">오가다 새소식</h2>
-
-                <div class="content-wrap clear">
-                    <div class="news">
-                        <a href="#"><img src="img/new1.jpg" alt="인기메뉴 재출시! 단호박라떼 & 흑임자라떼 - 에스프레소샷 추가시 500원"></a>
-                        <a href="#"><img src="img/new2.jpg" alt="사과를 더 맛있게 즐기는 방법 오가다 양구사과 밀크티"></a>
-                    </div>
-
-                    <div class="event-wrap">
-                        <div class="event-grp" id="evtGrp">
-                            <a href="http://ogadamall.cafe24.com/product/list.html?cate_no=45" target="_blank"><img
-                                    src="img/news_01.jpg" alt="영양가득 젤리스틱 할인 이벤트 - 9,900원(기간:재고소진시까지)"></a>
-
-                            <a href="https://www.instagram.com/ogada_official/" target="_blank"><img
-                                    src="img/news_04.jpg" alt="오가다 인스타그램 팔로우 이벤트"></a>
-
-                            <a href="http://ogadamall.cafe24.com/index.html" target="_blank"><img src="img/news_03.jpg"
-                                    alt="오가다 한라봉차(국내산 한라봉 100%) - 100원 이벤트 *오가다몰 신규/기존회원 모두에게 제공하는 혜택입니다 *ID당 1회, 네이버페이 구매시 미적용"></a>
-
-                            <a href="http://ogadamall.cafe24.com/product/list.html?cate_no=45" target="_blank"><img
-                                    src="img/news_01.jpg" alt="영양가득 젤리스틱 할인 이벤트 - 9,900원(기간:재고소진시까지)"></a>
-                        </div>
-
-                        <div class="event-pager" id="evtPager">
-                            <ul>
-                                <li class="active"><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="franchise">
-            <div class="fran-tit">
-                <h2>
-                    오가다와 함께 하실<br>
-                    점주님을 모십니다
-                </h2>
-                <p>오가다만의 차별화된 전략으로성공 창업을 지원합니다</p>
-            </div>
-
-            <ul>
-                <li>
-                    <a href="sub/guide.html">
-                        <img src="img/ico_fran-guide-w.png" alt="아이콘">
-                        <h3>
-                            창업안내
-                            <span>인테리어, 창업비용, 절차안내</span>
-                        </h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="sub/consult.html#cunsult">
-                        <img src="img/ico_mail-w.png" alt="아이콘">
-                        <h3>
-                            1:1 창업문의
-                            <span>FnQ, 상담문의 남기기</span>
-                        </h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="sub/consult.html">
-                        <img src="img/ico_tell-w.png" alt="아이콘">
-                        <h3>
-                            전화문의
-                            <span>지역담당자 연결 / 02-738-0124</span>
-                        </h3>
-                    </a>
-                </li>
-            </ul>
-        </article>
-    </section>
-
-
-
-
-
-
-
-    <div class="content-section fade-in">
-        <h2>Section 1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed ante vel odio luctus auctor eu eu leo.
-            Ut euismod quam eu arcu cursus, in pellentesque arcu malesuada.</p>
-        <img src="https://picsum.photos/800/400" alt="Section 1">
-    </div>
-
-    <div class="content-section fade-in">
-        <h2>Section 2</h2>
-        <p>Curabitur sollicitudin, velit vel tristique convallis, dui nisi dapibus sapien, eget semper purus lacus vel
-            arcu. Nulla facilisi. Sed vel felis non elit scelerisque congue.</p>
-        <img src="https://picsum.photos/800/401" alt="Section 2">
-    </div>
-
-    <div class="content-section fade-in">
-        <h2>Section 3</h2>
-        <p>Integer ut mi id urna tincidunt tincidunt. Ut vel libero nec velit ultrices viverra. Morbi vulputate tellus
-            vel libero laoreet, eget tincidunt purus hendrerit.</p>
-        <img src="https://picsum.photos/800/402" alt="Section 3">
-    </div>
-
-
-
-    <div class="content-section fade-in">
-        <h2>Section 4</h2>
-        <p>Phasellus vestibulum rhoncus est, ac consequat arcu venenatis vel. Suspendisse potenti. Fusce non erat vel
-            odio accumsan ultrices. Suspendisse potenti.</p>
-        <img src="https://picsum.photos/800/403" alt="Section 4">
-    </div>
-
-    <div class="content-section fade-in">
-        <h2>Section 5</h2>
-        <p>Aliquam erat volutpat. Aliquam eget metus in tellus finibus scelerisque in a dui. Quisque tincidunt, justo et
-            suscipit pharetra, mi orci dictum felis, vitae scelerisque quam purus quis orci.</p>
-        <img src="https://picsum.photos/800/404" alt="Section 5">
+        </div>
     </div>
 
     <footer>
-        <p>주소 : 대구광역시 한국it교육원 사업자등록번호 : 000-00-00000
-            전화 : 053-642-0900 팩스 : 053-642-0900 Email : sundubu@cry.co.kr</p>
-        <p> copyright© 2023 ogada.all rights reserved.</p>
+        <p><b>불쌍한 순두부</b> | 대표: 홍길동 | 주소: 대구광역시 중구 중앙대로</p>
+        <p>Copyright © 2024 SUNDUBU. All Rights Reserved.</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="script.js"></script>
-</body>
-
-</html>
-
-<script>
-    // JavaScript (script.js)
-    $(document).ready(function () {
-        // 간단한 제품 데이터
-        const products = [
-            { id: 1, name: '순두부찌개', image: 'https://picsum.photos/300/200', price: '9,000', images: ['https://picsum.photos/600/400', 'https://picsum.photos/600/401'], description: '상품 1에 대한 설명' },
-            { id: 2, name: '조개순두부찌개', image: 'https://picsum.photos/300/200', price: '10,000', images: ['https://picsum.photos/600/402', 'https://picsum.photos/600/403'], description: '상품 2에 대한 설명' },
-            { id: 3, name: '초당순두부', image: 'https://picsum.photos/300/200', price: '12,000', images: ['https://picsum.photos/600/404', 'https://picsum.photos/600/405'], description: '상품 3에 대한 설명' },
-            // ... 더 많은 제품 데이터 추가 가능
-        ];
-
-        // 제품 목록 생성
-        function renderProductList() {
-            const productList = $('#productList');
-            productList.empty();
-
-            products.forEach(product => {
-                const productHTML = `
-            <div class="product" data-id="${product.id}">
-                <img src="${product.image}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p>${product.price}</p>
-            </div>
-        `;
-                productList.append(productHTML);
-            });
-        }
-
-        // 모달 표시
-        function showModal(productId) {
-            const product = products.find(item => item.id === productId);
-            const modal = $('#productModal');
-            const slider = $('#imageSlider');
-            const details = $('#productDetails');
-
-            // 이미지 슬라이더에 이미지 추가
-            slider.empty();
-            product.images.forEach(image => {
-                slider.append(`<img src="${image}" alt="${product.name}" class="modal-image">`);
-            });
-
-            // 제품 상세 정보 추가
-            details.html(`
-            <h2>${product.name}</h2>
-            <p>${product.description}</p>
-            <p>가격: ${product.price}</p>
-        `);
-
-            // 모달 표시
-            modal.show();
-
-            // 이미지 슬라이더 초기화
-            let currentIndex = 0;
-            const images = slider.find('.modal-image');
-            images.eq(currentIndex).show();
-
-            // 다음 이미지로 이동하는 함수
-            function showNextImage() {
-                images.eq(currentIndex).hide();
-                currentIndex = (currentIndex + 1) % images.length;
-                images.eq(currentIndex).show();
-            }
-
-            // 이미지 슬라이더 자동 재생
-            const sliderInterval = setInterval(showNextImage, 3000);
-
-            // 모달 닫기 버튼 이벤트
-            $('.close').on('click', function () {
-                modal.hide();
-                clearInterval(sliderInterval); // 슬라이더 자동 재생 중지
-            });
-
-            // 모달 외부 클릭 시 닫기
-            $(window).on('click', function (event) {
-                if (event.target === modal[0]) {
-                    modal.hide();
-                    clearInterval(sliderInterval);
+    <script>
+        $(document).ready(function() {
+            // 상품 데이터
+            const products = [
+                { 
+                    id: 1, 
+                    name: '전통 순두부찌개', 
+                    price: '9,000', 
+                    img: 'https://picsum.photos/400/300?random=1',
+                    desc: '매일 아침 직접 만드는 신선한 순두부와 비법 양념장으로 깊은 맛을 낸 정통 찌개입니다.'
+                },
+                { 
+                    id: 2, 
+                    name: '들깨 버섯 순두부', 
+                    price: '10,500', 
+                    img: 'https://picsum.photos/400/300?random=2',
+                    desc: '고소한 들깨가루와 신선한 느타리, 팽이버섯이 어우러져 담백하고 영양 가득한 별미입니다.'
+                },
+                { 
+                    id: 3, 
+                    name: '해물 가득 순두부', 
+                    price: '11,000', 
+                    img: 'https://picsum.photos/400/300?random=3',
+                    desc: '새우, 조개, 꽃게 등 풍부한 해산물을 넣어 바다의 시원함을 그대로 담았습니다.'
                 }
+            ];
+
+            // 리스트 출력
+            function loadProducts() {
+                const list = $('#productList');
+                products.forEach(p => {
+                    list.append(`
+                        <div class="product-item" data-id="${p.id}">
+                            <img src="${p.img}" alt="${p.name}">
+                            <div class="product-info">
+                                <h3>${p.name}</h3>
+                                <p class="price">${p.price}원</p>
+                            </div>
+                        </div>
+                    `);
+                });
+            }
+
+            // 모달 열기
+            $(document).on('click', '.product-item', function() {
+                const id = $(this).data('id');
+                const p = products.find(item => item.id === id);
+                
+                $('#modalSlider').html(`<img src="${p.img}" alt="${p.name}">`);
+                $('#modalDesc').html(`
+                    <h2 style="font-family:'Noto Serif KR'; margin-bottom:15px;">${p.name}</h2>
+                    <p style="color:#d9534f; font-weight:bold; font-size:22px; margin-bottom:20px;">${p.price}원</p>
+                    <p style="line-height:1.8; color:#666;">${p.desc}</p>
+                    <button style="margin-top:30px; background:#333; color:#fff; border:none; padding:12px 25px; cursor:pointer; border-radius:5px;">주문하기</button>
+                `);
+                
+                $('#productModal').css('display', 'flex').hide().fadeIn(300);
             });
-        }
 
-        // 제품 목록 초기 렌더링
-        renderProductList();
+            // 모달 닫기
+            $('.close-modal, .modal').on('click', function(e) {
+                if(e.target === this) $('#productModal').fadeOut(200);
+            });
 
-        // 제품 클릭 시 모달 표시
-        $('#productList').on('click', '.product', function () {
-            const productId = $(this).data('id');
-            showModal(productId);
+            loadProducts();
         });
-
-        // 스크롤 이벤트 추가
-        let lastScrollTop = 0;
-        $(window).on('scroll', function () {
-            const currentScrollTop = $(this).scrollTop();
-
-            if (currentScrollTop > lastScrollTop) {
-                // 스크롤 다운 시
-                $('body').removeClass('scroll-up').addClass('scroll-down');
-            } else {
-                // 스크롤 업 시
-                $('body').removeClass('scroll-down').addClass('scroll-up');
-            }
-
-            lastScrollTop = currentScrollTop;
-        });
-
-    });
-    // 스크롤 이벤트 추가
-    let lastScrollTop = 0;
-    $(window).on('scroll', function () {
-        const currentScrollTop = $(this).scrollTop();
-
-        if (currentScrollTop > lastScrollTop) {
-            // 스크롤 다운 시
-            $('body').removeClass('scroll-up').addClass('scroll-down');
-        } else {
-            // 스크롤 업 시
-            $('body').removeClass('scroll-down').addClass('scroll-up');
-        }
-
-        // 섹션 배경색 및 이미지 효과
-        $('.content-section').each(function () {
-            const sectionOffset = $(this).offset().top;
-            const sectionHeight = $(this).outerHeight();
-
-            if (currentScrollTop > sectionOffset - window.innerHeight / 2 && currentScrollTop < sectionOffset + sectionHeight) {
-                $(this).addClass('active');
-            } else {
-                $(this).removeClass('active');
-            }
-        });
-
-        lastScrollTop = currentScrollTop;
-    });
-</script>
+    </script>
+</body>
+</html>

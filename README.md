@@ -7,7 +7,7 @@
 ---
 
 ## 🔗 프로젝트 정보
-- **배포 URL**: [https://a-meba.github.io/MongleDubu/](https://a-meba.github.io/MongleDubu/)
+- **배포 URL**: [[https://a-meba.github.io/MongleDubu/](https://a-meba.github.io/MongleDubu/)]
 - **시스템 관리자(Admin)**: `admin@mongle.com` / `PW: 1234`
 - **가맹점주(User)**: `(신규 가맹점 등록 후 이용 가능)`
 

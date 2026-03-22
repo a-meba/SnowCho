@@ -4,7 +4,7 @@
 첫프로젝트입니다 [![따봉](https://img.shields.io/badge/따봉-👍-brightgreen)](링크)
 
 
-배포 URL :  <BR>
+배포 URL : https://a-meba.github.io/SnowCho/ <BR>
 admin ID : <BR>
 admin PW : <BR>
 user ID :<BR>
